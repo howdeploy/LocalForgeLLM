@@ -1,0 +1,9 @@
+/.local/
+/models/
+/runtime/
+/logs/
+*.gguf
+*.safetensors
+.env
+.env.*
+!.env.example

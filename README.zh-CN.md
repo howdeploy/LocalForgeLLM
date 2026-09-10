@@ -12,7 +12,7 @@
 
 **所需条件：** 能访问终端的编程智能体，以及存放所选模型的空间。智能体会根据你的电脑选择依赖项和内存设置。
 
-1. 在编程智能体中打开本仓库。
+1. 在编程智能体中打开本仓库，让它阅读 [AGENTS.md](AGENTS.md) 和 [SKILL.md](SKILL.md)。
 2. 描述任务、所需上下文长度和 RAM/VRAM 预算。可以指定模型，也可以交给智能体选择。
 3. 让智能体按照框架文档安装引擎、调优模型，并保存可用的启动配置。
 
@@ -41,4 +41,4 @@ Qwen：28 个请求，上下文最多为 29,087 token。Gemma：启用视觉功�
 
 ## 文档
 
-[简体中文文档](docs/README.zh-CN.md) · [启动配置](docs/README.zh-CN.md#启动配置) · [测量方法](docs/README.zh-CN.md#资源占用与测量方法) · [详细对比](docs/README.zh-CN.md#colibri-与-freetoken-对比)
+[智能体技能](SKILL.md) · [框架操作指南](docs/README.zh-CN.md#智能体操作指南) · [简体中文文档](docs/README.zh-CN.md) · [启动配置](docs/README.zh-CN.md#启动配置) · [测量方法](docs/README.zh-CN.md#资源占用与测量方法) · [详细对比](docs/README.zh-CN.md#colibri-与-freetoken-对比)

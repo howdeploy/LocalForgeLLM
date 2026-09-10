@@ -6,6 +6,26 @@
 
 [Back to the project](../README.md) · [Install](#install) · [Launch profiles](#launch-profiles) · [Measurements](#measured-on-an-rtx-4060)
 
+## Agent manual
+
+Start with [AGENTS.md](../AGENTS.md) and the shared [LocalForgeLLM skill](../SKILL.md). The framework covers three LLM work levels: install an existing model and stack; tune or modify them; build a derived artifact from full weights. Updates and interface integration apply across the levels. Image, video and audio generation have a separate planned branch.
+
+| Read when | Guide |
+|:--|:--|
+| Understand the framework and component ownership | [Architecture](architecture.md) |
+| Interpret a task, discover an implementation or resume a stack | [Agent workflow and stack record](agent-workflow.md) |
+| Install a published model and its dependencies | [Level 1 — install](llm/install.md) |
+| Change context, placement, performance or MoE behavior | [Level 2 — tune and adapt](llm/tune.md) |
+| Convert/calibrate/quantize full weights | [Level 3 — build](llm/build.md) |
+| Choose an engine or an optional weight-processing method | [Engines](implementations/engines.md) · [APEX](implementations/apex.md) |
+| Connect or customize an agent/shell | [Interface contracts](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
+| Update, repair or roll back a working stack | [Operations](operations.md) |
+| Establish capability, quality and resource use | [Validation](validation.md) |
+| Work on the future generative branch | [Planned scope](generative/README.md) |
+| Check versions and the evidence behind a guide | [Sources](sources.md) |
+
+The technical guides are maintained in English. The four language entry pages preserve the translated deployment examples below. Source-inspected configuration is distinguished from measured deployment results in [verification scope](sources.md#existing-measured-stack).
+
 ## How it works
 
 1. Give your coding agent the task, target context and memory budget. Specify a MoE model or let it choose one. It inspects the CPU, GPU, RAM, storage and installed software.

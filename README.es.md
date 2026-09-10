@@ -12,7 +12,7 @@
 
 **Necesitas:** un agente de programación con acceso al terminal y espacio para el modelo elegido. El agente selecciona las dependencias y los ajustes de memoria para tu equipo.
 
-1. Abre este repositorio en tu agente de programación.
+1. Abre este repositorio en tu agente de programación y pídele que lea [AGENTS.md](AGENTS.md) y [SKILL.md](SKILL.md).
 2. Describe la tarea, el tamaño de contexto deseado y el presupuesto de RAM/VRAM. Indica un modelo o deja que el agente lo elija.
 3. Pídele que siga la documentación del framework para instalar el motor, ajustar el modelo y guardar un perfil de inicio funcional.
 
@@ -41,4 +41,4 @@ Nuestra velocidad de Qwen es **2.13×** la [velocidad en caliente publicada por 
 
 ## Documentación
 
-[Documentación en español](docs/README.es.md) · [Perfiles de inicio](docs/README.es.md#perfiles-de-inicio) · [Metodología de medición](docs/README.es.md#uso-de-recursos-y-metodología) · [Comparación detallada](docs/README.es.md#comparación-con-colibri-y-freetoken)
+[Skill del agente](SKILL.md) · [Manual del framework](docs/README.es.md#manual-para-el-agente) · [Documentación en español](docs/README.es.md) · [Perfiles de inicio](docs/README.es.md#perfiles-de-inicio) · [Metodología de medición](docs/README.es.md#uso-de-recursos-y-metodología) · [Comparación detallada](docs/README.es.md#comparación-con-colibri-y-freetoken)

@@ -6,6 +6,26 @@
 
 [返回项目](../README.zh-CN.md) · [安装](#安装) · [启动配置](#启动配置) · [实测数据](#rtx-4060-实测)
 
+## 智能体操作指南
+
+先阅读 [AGENTS.md](../AGENTS.md) 和通用的 [LocalForgeLLM 技能](../SKILL.md)。框架提供三个 LLM 工作层级：安装现成模型与技术栈；调优或修改；从完整权重构建衍生模型产物。更新和接口集成适用于各层级。图像、视频和音频生成属于单独规划中的分支。
+
+| 阅读场景 | 指南 |
+|:--|:--|
+| 理解框架及组件职责 | [架构](architecture.md) |
+| 分析任务、学习新实现或继续维护已有技术栈 | [智能体流程与技术栈记录](agent-workflow.md) |
+| 安装已发布的模型及依赖项 | [第 1 层 — 安装](llm/install.md) |
+| 调整上下文、计算分配、性能或 MoE 行为 | [第 2 层 — 调优与适配](llm/tune.md) |
+| 转换、校准及量化完整权重 | [第 3 层 — 构建](llm/build.md) |
+| 选择引擎或权重处理方法 | [引擎](implementations/engines.md) · [APEX](implementations/apex.md) |
+| 连接或定制智能体与交互界面 | [接口约定](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
+| 更新、修复或回滚现有技术栈 | [维护操作](operations.md) |
+| 验证功能、质量与资源占用 | [验证](validation.md) |
+| 开发未来的生成式模型分支 | [规划范围](generative/README.md) |
+| 核对版本与说明依据 | [来源](sources.md) |
+
+新的技术指南以英文维护，下方部署示例保留中文版。[验证范围](sources.md#existing-measured-stack) 区分了源码核对的信息与实际部署测量结果。
+
 ## 工作原理
 
 1. 告诉编程智能体任务、目标上下文长度和内存预算。可以指定 MoE 模型，也可以让它选择。它会检查 CPU、GPU、内存、存储及已安装软件。

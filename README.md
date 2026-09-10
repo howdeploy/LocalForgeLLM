@@ -12,7 +12,7 @@
 
 **You need:** a coding agent with terminal access and space for the chosen model. The agent selects dependencies and memory settings for your machine.
 
-1. Open this repository in your coding agent.
+1. Open this repository in your coding agent and have it read [AGENTS.md](AGENTS.md) and [SKILL.md](SKILL.md).
 2. Describe the task, desired context size and RAM/VRAM budget. Specify a model or let the agent choose one.
 3. Ask it to use the framework documentation to set up the runtime, tune the model and save a working launch profile.
 
@@ -41,4 +41,4 @@ Our Qwen rate is **2.13×** [Colibri's reported warm rate](https://github.com/Ju
 
 ## Documentation
 
-[English documentation](docs/README.md) · [Launch profiles](docs/README.md#launch-profiles) · [Measurement methodology](docs/README.md#resource-use-and-methodology) · [Comparison details](docs/README.md#comparison-with-colibri-and-freetoken)
+[Agent skill](SKILL.md) · [Framework manual](docs/README.md#agent-manual) · [English documentation](docs/README.md) · [Launch profiles](docs/README.md#launch-profiles) · [Measurement methodology](docs/README.md#resource-use-and-methodology) · [Comparison details](docs/README.md#comparison-with-colibri-and-freetoken)

@@ -6,6 +6,26 @@
 
 [Volver al proyecto](../README.es.md) · [Instalación](#instalación) · [Perfiles de inicio](#perfiles-de-inicio) · [Mediciones](#mediciones-en-una-rtx-4060)
 
+## Manual para el agente
+
+Empieza por [AGENTS.md](../AGENTS.md) y el [skill común de LocalForgeLLM](../SKILL.md). El framework cubre tres niveles de trabajo con LLM: instalar un modelo y su entorno; ajustarlos o modificarlos; construir un artefacto derivado a partir de los pesos completos. Las actualizaciones y la integración de interfaces se aplican a todos los niveles. La generación de imágenes, vídeo y audio tiene una rama independiente planificada.
+
+| Cuándo leer | Guía |
+|:--|:--|
+| Entender el framework y las responsabilidades de cada componente | [Arquitectura](architecture.md) |
+| Interpretar una tarea, estudiar una implementación o retomar un entorno | [Proceso del agente y registro del entorno](agent-workflow.md) |
+| Instalar un modelo publicado y sus dependencias | [Nivel 1 — instalación](llm/install.md) |
+| Cambiar contexto, distribución, rendimiento o comportamiento MoE | [Nivel 2 — ajuste y adaptación](llm/tune.md) |
+| Convertir, calibrar y cuantizar pesos completos | [Nivel 3 — construcción](llm/build.md) |
+| Elegir un motor o método de procesamiento de pesos | [Motores](implementations/engines.md) · [APEX](implementations/apex.md) |
+| Conectar o personalizar un agente y su interfaz | [Contratos de interfaz](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
+| Actualizar, reparar o restaurar un entorno funcional | [Mantenimiento](operations.md) |
+| Verificar capacidades, calidad y uso de recursos | [Validación](validation.md) |
+| Desarrollar la futura rama generativa | [Alcance previsto](generative/README.md) |
+| Comprobar versiones y fundamentos de las instrucciones | [Fuentes](sources.md) |
+
+Las nuevas guías técnicas se mantienen en inglés; los ejemplos de despliegue de esta página conservan su traducción al español. El [alcance de verificación](sources.md#existing-measured-stack) distingue los datos contrastados con el código de los resultados medidos en un entorno real.
+
 ## Cómo funciona
 
 1. Indica a tu agente de programación la tarea, el contexto deseado y el presupuesto de memoria. Especifica un modelo MoE o deja que lo elija. El agente examina la CPU, GPU, RAM, almacenamiento y software instalado.
