@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title description">
+  <title id="title">Qwen3.6 35B-A3B: three local configurations</title>
+  <desc id="description">LocalForgeLLM: 21.11 tokens per second across 28 requests, 13.43 GiB peak process RSS, Ryzen 5 5600 and RTX 4060 8 GB, APEX I-Compact. Colibri: authors report 9.9 tokens per second warm, 40 GB peak RSS, Threadripper 3945WX and RTX 3070 8 GB, int4. FreeToken: authors report 39.3 tokens per second, Core i9-13900H and RTX 4060 Laptop 8 GB, NVFP4, with 32 GiB installed RAM. These configurations use different CPUs, weight formats, workloads and memory definitions.</desc>
+  <rect width="960" height="440" fill="#fafafa"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
+    <text x="32" y="42" font-size="26" font-weight="700">Example: Qwen3.6 35B-A3B</text>
+    <text x="32" y="72" font-size="15" fill="#414141">Decode and memory across three configurations · September 2026</text>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="112">SYSTEM</text>
+      <text x="456" y="112">DECODE</text>
+      <text x="648" y="112">HOST MEMORY</text>
+    </g>
+    <g fill="none" stroke="#c1c1c1">
+      <path d="M32 128H928M32 208H928M32 288H928M32 368H928"/>
+      <path d="M432 96V368M624 96V368"/>
+    </g>
+    <g font-size="19" font-weight="600">
+      <text x="32" y="162">LocalForgeLLM</text>
+      <text x="32" y="242">Colibri</text>
+      <text x="32" y="322">FreeToken</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="188">RTX 4060 8 GB · Ryzen 5 5600</text>
+      <text x="32" y="268">RTX 3070 8 GB · Threadripper 3945WX</text>
+      <text x="32" y="348">RTX 4060 Laptop 8 GB · i9-13900H</text>
+    </g>
+    <g font-size="28" font-weight="700">
+      <text x="456" y="164">21.11</text>
+      <text x="456" y="244">9.9</text>
+      <text x="456" y="324">39.3</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="456" y="188">tok/s · 28 requests</text>
+      <text x="456" y="268">tok/s · warm</text>
+      <text x="456" y="348">tok/s · reported</text>
+    </g>
+    <g font-size="22" font-weight="600">
+      <text x="648" y="164">13.43 GiB</text>
+      <text x="648" y="244">40 GB</text>
+      <text x="648" y="324">32 GiB</text>
+    </g>
+    <g font-size="14" fill="#414141">
+      <text x="648" y="188">Peak process RSS</text>
+      <text x="648" y="268">Reported peak RSS</text>
+      <text x="648" y="348">Installed RAM, not RSS</text>
+      <text x="32" y="398">Formats: APEX I-Compact / int4 / NVFP4. Different CPUs and workloads.</text>
+      <text x="32" y="422">LocalForgeLLM: our logs. Colibri and FreeToken: author-reported results.</text>
+    </g>
+  </g>
+</svg>

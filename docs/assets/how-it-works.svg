@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="352" viewBox="0 0 960 352" role="img" aria-labelledby="title description">
+  <title id="title">LocalForgeLLM: your agent builds a local stack</title>
+  <desc id="description">Your task, hardware and memory budget guide a coding agent. You can specify a MoE model or let the agent select one. It reads documentation, chooses a compatible model, runtime and quantization, and tunes launch settings. It runs the workload, checks output, measures speed and memory, and refines the settings before saving a reusable profile. The same workflow applies to different MoE models and runtimes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#414141"/></marker>
+  </defs>
+  <rect width="960" height="352" fill="#fafafa"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
+    <text x="32" y="42" font-size="26" font-weight="700">A local stack tuned by your agent</text>
+    <text x="32" y="72" font-size="15" fill="#414141">Your model. Your hardware. A repeatable path to the right settings.</text>
+    <g fill="none" stroke="#c1c1c1">
+      <rect x="32" y="104" width="176" height="152"/>
+      <rect x="248" y="104" width="240" height="152"/>
+      <rect x="528" y="104" width="184" height="152"/>
+      <rect x="752" y="104" width="176" height="152"/>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="48" y="132">YOUR INPUT</text>
+      <text x="264" y="132">AGENT + DOCS</text>
+      <text x="544" y="132">RUN + MEASURE</text>
+      <text x="768" y="132">YOUR LOCAL STACK</text>
+    </g>
+    <g font-size="17" font-weight="600">
+      <text x="48" y="164">Task + limits</text>
+      <text x="264" y="164">Select + configure</text>
+      <text x="544" y="164">Your workload</text>
+      <text x="768" y="164">Launch profile</text>
+    </g>
+    <g font-size="14" fill="#414141">
+      <text x="48" y="192">CPU / GPU / RAM</text>
+      <text x="48" y="216">Optional model</text>
+      <text x="264" y="192">Model + runtime</text>
+      <text x="264" y="216">Quantization + settings</text>
+      <text x="544" y="192">Speed / RAM / VRAM</text>
+      <text x="544" y="216">Check the output</text>
+      <text x="768" y="192">Local endpoint</text>
+      <text x="768" y="216">Ready to reuse</text>
+    </g>
+    <g fill="none" stroke="#414141" stroke-width="1.5" marker-end="url(#arrow)">
+      <path d="M208 180H240"/>
+      <path d="M488 180H520"/>
+      <path d="M712 180H744"/>
+      <path d="M620 256V288H368V264"/>
+    </g>
+    <text x="414" y="312" font-size="14" fill="#414141">Adjust and repeat</text>
+    <text x="32" y="336" font-size="14" fill="#414141">Same workflow, different MoE models and runtimes.</text>
+  </g>
+</svg>
