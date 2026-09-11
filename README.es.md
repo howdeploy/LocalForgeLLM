@@ -39,6 +39,12 @@ Qwen: 28 solicitudes, hasta 29,087 tokens de contexto. Gemma: una solicitud con 
 
 Nuestra velocidad de Qwen es **2.13×** la [velocidad en caliente publicada por Colibri](https://github.com/JustVugg/colibri/blob/main/docs/qwen36-cuda-tier.md) y **un 46.3% inferior** a la [publicada por FreeToken](https://arxiv.org/html/2608.16157v1#S5), en las configuraciones indicadas arriba. Un modelo de 35B funciona aquí con **13.43 GiB de RSS máximo y 4.07 GiB de VRAM del modelo**. [Ajustes, definiciones de las métricas y fuentes →](docs/README.es.md#comparación-con-colibri-y-freetoken)
 
+## Gemma 4 con MTP
+
+Actualización del 11 de septiembre: **14.83 tokens/s** ponderados en dos solicitudes; la respuesta larga registró **1535 tokens en 102.05 s de generación, 15.03 tokens/s**. El modelo principal sigue siendo Heretic APEX I-Balanced; Q8_0 corresponde al asistente MTP separado. Se conservaron la distribución de los pesos principales y la ventana de 32K.
+
+La diferencia observada frente a la solicitud anterior sin MTP (9.81 tokens/s) es **+51.1%**, pero las solicitudes difieren: no es una ganancia causal aislada de MTP. El contexto máximo observado fue de 2265 tokens; la evaluación formal de calidad sigue pendiente. [Resumen e infografías en inglés](README.md#gemma-4-with-mtp) · [Mediciones y fuentes](docs/benchmarks/gemma4-mtp.md) · [Descargar, activar y desactivar MTP](docs/implementations/mtp.md)
+
 ## Documentación
 
 [Skill del agente](SKILL.md) · [Manual del framework](docs/README.es.md#manual-para-el-agente) · [Documentación en español](docs/README.es.md) · [Perfiles de inicio](docs/README.es.md#perfiles-de-inicio) · [Metodología de medición](docs/README.es.md#uso-de-recursos-y-metodología) · [Comparación detallada](docs/README.es.md#comparación-con-colibri-y-freetoken)

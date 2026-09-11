@@ -39,6 +39,12 @@ Qwen：28 个请求，上下文最多为 29,087 token。Gemma：启用视觉功�
 
 在上图所列配置下，我们的 Qwen 速度为 [Colibri 报告的热状态速度](https://github.com/JustVugg/colibri/blob/main/docs/qwen36-cuda-tier.md)的 **2.13 倍**，比 [FreeToken 报告的速度](https://arxiv.org/html/2608.16157v1#S5)**低 46.3%**。35B 模型在此配置下运行时，**进程 RSS 峰值为 13.43 GiB，模型显存占用为 4.07 GiB**。[配置、指标定义与来源 →](docs/README.zh-CN.md#colibri-与-freetoken-对比)
 
+## Gemma 4 与 MTP
+
+9 月 11 日更新：两个请求的加权解码速度为 **14.83 token/s**；长回复在 **102.05 秒解码时间内输出 1535 token，速度为 15.03 token/s**。主模型仍是 Heretic APEX I-Balanced，Q8_0 指独立的 MTP 助手。主模型的权重分布和 32K 配置窗口保持不变。
+
+相对于此前未启用 MTP 的请求（9.81 token/s），观察到的差异为 **+51.1%**。请求内容不同，因此不能将其视为 MTP 的独立因果增益。最大实际上下文为 2265 token，正式质量评估仍待完成。[英文摘要与两张信息图](README.md#gemma-4-with-mtp) · [测量数据与来源](docs/benchmarks/gemma4-mtp.md) · [下载、启用和关闭 MTP](docs/implementations/mtp.md)
+
 ## 文档
 
 [智能体技能](SKILL.md) · [框架操作指南](docs/README.zh-CN.md#智能体操作指南) · [简体中文文档](docs/README.zh-CN.md) · [启动配置](docs/README.zh-CN.md#启动配置) · [测量方法](docs/README.zh-CN.md#资源占用与测量方法) · [详细对比](docs/README.zh-CN.md#colibri-与-freetoken-对比)

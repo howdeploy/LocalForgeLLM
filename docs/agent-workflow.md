@@ -80,6 +80,7 @@ The record must contain:
 | Runtime | Source/tag/commit or package version, binary path, dependency environment, launch command and effective settings |
 | API and clients | Reachable URL from each client environment, protocol, model ID, context/output limits, capability flags, credential reference |
 | Operation | Baseline, candidate, completed steps, next step, stop/start procedure and rollback target |
+| MTP, when requested | Requested/effective mode; embedded or separate head; source revision, size and SHA-256; draft settings/placement; profile without MTP; separate download, load, quality and speed results |
 | Validation | Workload identity, date, prompt/decode timings, memory definitions, quality/tool checks and failures |
 | Derived weights | Parent revision/hash, converter/quantizer version, tensor recipe, calibration data identity, evaluation results |
 

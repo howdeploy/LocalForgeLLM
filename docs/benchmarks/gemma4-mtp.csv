@@ -1,0 +1,4 @@
+phase,request,prompt_tokens,prompt_ms,output_tokens,decode_ms,total_ms,context_tokens,draft_accepted,draft_generated
+baseline,B1,100,14316.89,171,17324.17,31641.06,270,,
+mtp,M1,103,10887.41,300,21579.08,32466.49,402,174,250
+mtp,M2,632,47289.03,1535,102047.08,149336.12,2265,801,1468

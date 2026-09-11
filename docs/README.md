@@ -16,6 +16,7 @@ Start with [AGENTS.md](../AGENTS.md) and the shared [LocalForgeLLM skill](../SKI
 | Interpret a task, discover an implementation or resume a stack | [Agent workflow and stack record](agent-workflow.md) |
 | Install a published model and its dependencies | [Level 1 — install](llm/install.md) |
 | Change context, placement, performance or MoE behavior | [Level 2 — tune and adapt](llm/tune.md) |
+| Download a matching head; enable, disable or diagnose speculative decoding | [MTP operations, memory and quality](implementations/mtp.md) |
 | Convert/calibrate/quantize full weights | [Level 3 — build](llm/build.md) |
 | Choose an engine or an optional weight-processing method | [Engines](implementations/engines.md) · [APEX](implementations/apex.md) |
 | Connect or customize an agent/shell | [Interface contracts](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
@@ -83,6 +84,8 @@ systemd-run --user --unit=gemma-apex --collect \
 
 Stop with `systemctl --user stop gemma-apex`. The projector runs on the CPU. Keep the 1152 batch sizes with the 1120 image-token limit: smaller microbatches caused an image-processing assertion in this build.
 
+For the optional MTP trial, follow the [verified 0.46 GB head download](implementations/mtp.md#download-a-compatible-head) and [Gemma MTP settings](implementations/mtp.md#gemma-trial-settings). Add those options to a candidate copy of this command, retaining the main placement and context. Disable by restoring this original command through the same service manager. The target remains APEX I-Balanced; the separate head is Q8_0.
+
 ### Qwen
 
 Runs in the foreground; stop with `Ctrl+C`. This profile has no service memory limit or vision projector.
@@ -106,14 +109,15 @@ These profiles use [APEX](https://github.com/localai-org/apex-quant) mixed-preci
 
 ## Measured on an RTX 4060
 
-Ryzen 5 5600 · 32 GB RAM · Manjaro Linux · llama.cpp b10883 / Vulkan · September 10, 2026.
+Ryzen 5 5600 · 32 GB RAM · Manjaro Linux · llama.cpp b10883 / Vulkan · September 10–11, 2026.
 
 | Model / profile | Decode | Context window | RAM / model VRAM |
 |:--|--:|--:|:--|
 | Qwen3.6 35B-A3B · I-Compact | **21.11 tok/s** | **32,768** | 13.43 GiB peak RSS / 4.07 GiB |
 | Gemma 4 26B-A4B Heretic · I-Balanced + vision | **9.78 tok/s** | **32,768** | 11 GiB service limit / 4.88 GiB snapshot |
+| Gemma 4, same target + Q8 MTP head (September 11) | **14.83 tok/s** | **32,768** | 11 GiB service limit / [startup allocations](benchmarks/gemma4-mtp.md#resource-accounting) |
 
-Qwen: 28 completed requests, 19.37–22.09 tok/s, up to 29,087 reported context tokens. Gemma: one completed request with vision enabled, 599 input / 632 output tokens. A configured 32K window is not a full-window stress test; decode rates exclude prompt processing.
+September 10: Qwen had 28 completed requests, 19.37–22.09 tok/s, up to 29,087 reported context tokens; Gemma had one completed request with vision enabled, 599 input / 632 output tokens. September 11: Gemma MTP had two requests with final timings, 1835 logged output tokens and at most 2265 live context tokens; MTP vision quality was not tested. A configured 32K window is not a full-window stress test; decode rates exclude prompt processing.
 
 ## Resource use and methodology
 
@@ -139,3 +143,13 @@ Qwen generated 7,820 tokens across 28 completed requests. Weighted decode is `(7
 - **[FreeToken](https://arxiv.org/html/2608.16157v1#S5):** authors report 39.3 tok/s on RTX 4060 Laptop 8 GB + i9-13900H, 32 GiB LPDDR5, NVFP4, OpenCode coding workload. Installed RAM is not measured process consumption.
 
 Our Qwen rate is **2.13×** Colibri's cited warm rate and **46.3% below** FreeToken's cited rate. The rows describe different CPUs, formats, workloads and averaging methods. For memory, our figure and Colibri's are process RSS; FreeToken's 32 GiB is installed capacity. Gemma's 11 GiB is a service limit including file cache. Keep these definitions when comparing configurations.
+
+## Gemma 4 and MTP comparisons
+
+![Gemma 4 deployment results with hardware, weights and evidence scope for LocalForgeLLM, llama.cpp community profiles, Ollama and FreeToken.](assets/gemma4-comparison.svg)
+
+![Gemma MTP session change: 14.83 tok/s weighted, 15.03 over a 102.05-second decode, and a 51.1 percent observed gap that is not a controlled gain.](assets/gemma4-mtp.svg)
+
+The September 11 no-MTP request measured 9.81 tok/s; two different MTP requests averaged 14.83 tok/s. The longer response sustained 15.03 tok/s during decode, but also took 47.29 s to process its new prompt. Main offload, CPU expert placement and the 32K allocation stayed fixed. Different requests and cache state prevent treating the +51.1% gap as causal MTP uplift. Formal quality checks remain pending.
+
+The [case study](benchmarks/gemma4-mtp.md) includes full-Q8 and QAT alternatives, the external measurements' methods, Colibri's missing Gemma result, FreeToken's modality limits and the [sanitized timing data](benchmarks/gemma4-mtp.csv). Follow [MTP operations](implementations/mtp.md) for artifact discovery, verified downloads, switching and rollback.

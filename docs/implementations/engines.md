@@ -24,6 +24,8 @@ Read the following paths at the selected revision:
 | `docs/build.md`, `common/arg.cpp` | Backend build requirements and real CLI flags/defaults |
 | `src/llama-model.cpp`, `src/models/` | Architecture metadata, tensors and computation graph |
 | `tools/server/server-context.cpp` | Slots, request scheduling and inference state |
+| `common/speculative.cpp`, `common/common.h`, `src/models/delta-net-base.cpp` | [MTP](mtp.md): head/context initialization, draft sampling and recurrent rollback state |
+| `src/models/gemma4-assistant.cpp`, `src/models/gemma4.cpp` | Separate Gemma MTP assistant, target dimensions and shared KV; [agent operations](mtp.md#operate-an-existing-stack) and [measured case](../benchmarks/gemma4-mtp.md) |
 | `tools/server/server-chat.cpp` | Chat request/template and response handling |
 | `tools/quantize/quantize.cpp`, `src/llama-quant.cpp` | Weight transformation flags and actual buffer/tensor processing |
 | `tools/ui/` | [Bundled UI and its agent/tool integration](../interfaces/llama-ui.md) |

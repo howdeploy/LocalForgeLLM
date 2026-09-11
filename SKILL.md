@@ -1,6 +1,6 @@
 ---
 name: localforgellm
-description: Choose local LLM models and quantizations for the user's real hardware and target tokens per second; compare CPU/RAM/GPU placement. Build, tune, update and repair dense or MoE stacks, process weights, and connect Pi, OpenShell, llama UI or Hermes. Use for model recommendations, memory/speed feasibility, installation and context tuning. Generative image, video and audio workflows are a planned branch.
+description: Choose local LLM models and quantizations for the user's real hardware and target tokens per second; compare CPU/RAM/GPU placement. Build, tune, update and repair dense or MoE stacks, process weights, and connect Pi, OpenShell, llama UI or Hermes. Use for model recommendations, memory/speed feasibility, installation, context tuning and MTP head downloads or switching. Generative image, video and audio workflows are a planned branch.
 ---
 
 # LocalForgeLLM
@@ -16,6 +16,7 @@ This skill belongs to the complete LocalForgeLLM repository. Resolve the links b
 | Recommend a model/quant or assess a target tok/s | [Candidate comparison](docs/agent-workflow.md#select-a-candidate) → [Level 2](docs/llm/tune.md) | Hardware/resource budget and compared placements; measured speed or an explicit estimate with a validation step |
 | Install a model or build a stack for a task | [Level 1](docs/llm/install.md) | Compatible dependencies, weights, server and working client |
 | Change context, memory, speed or model behavior | [Level 2](docs/llm/tune.md) | Measured configuration or a separately identified model modification |
+| Download MTP weights; enable, disable or diagnose speculation | [MTP operations](docs/implementations/mtp.md#operate-an-existing-stack) | Verified compatible head when needed, preserved main placement, effective mode and a working rollback |
 | Create a custom model from full weights | [Level 3](docs/llm/build.md) | Derived artifact with source revision, recipe and quality results |
 | Update, resume, repair or replace a component | [Operations](docs/operations.md) | Working stack with a tested rollback path |
 | Connect an agent or customize its shell | [Interfaces](docs/interfaces/README.md) | Working client/harness connection and the requested extension |
@@ -37,6 +38,7 @@ Levels describe the nature of the task, not mandatory steps. Installing a publis
 
 - The coding agent orchestrates; the inference engine executes the model; the harness owns tools and history; OpenShell owns its execution environment and access rules.
 - APEX selects precision for weights. It is optional, is not an agent harness and is not a runtime optimizer. Read [APEX](docs/implementations/apex.md) only when using that method.
+- MTP drafts tokens for target verification. Follow [MTP operations](docs/implementations/mtp.md#operate-an-existing-stack) to discover/download only a missing compatible head and switch the saved profile on or off. Preserve the main model's layers, CPU expert placement and context for an MTP-only request. A loaded head or high acceptance does not establish useful output or a speed gain; keep manual quality checks pending until the user's feedback. See the [Gemma case study](docs/benchmarks/gemma4-mtp.md) for measured results and their limits.
 - CPU/GPU placement does not change the number of experts selected by the learned router. Changing routing, pruning tensors and changing tensor precision have different compatibility and quality implications.
 - Advertised model context, server context per slot, client context and output budget must agree. Cumulative session tokens are not the current context size.
 - “Build from scratch” in level 3 means constructing a derived deployment artifact from existing full weights. Training a new base model requires a separate explicit training task, data and compute plan.

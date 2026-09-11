@@ -4,6 +4,8 @@
 
 Validation follows the requested capability. Separate checks actually run on the user's stack from source inspection, estimates and published benchmarks. UI/visual checks require the user's permission; API, configuration and appropriate nonvisual checks can establish their own narrower results.
 
+When the user reserves inference tests for themselves, prepare the profile and checks without sending generation requests. Report startup, quality and performance as separate results; pending manual feedback is not a pass. For [MTP](implementations/mtp.md), check short-output correctness before long-input or speed tests and include reused-session behavior where required.
+
 ## Endpoint and tool protocol
 
 For the example llama.cpp server on the same host:
@@ -67,6 +69,10 @@ Record the hardware, runtime build, weight artifact/hash, launch/client paramete
 - **CPU/GPU:** utilization with its normalization and sample interval, temperatures, paging and I/O stalls when relevant.
 
 Measure a short request, the representative task and the requested long-context/concurrency case. Repeat only enough to distinguish noise from the decision at hand. A configured context window does not prove it was filled during the run.
+
+When reading existing llama.cpp b10883 logs, delimit each launch by its saved byte offset or process identity before pairing slot/task timings: task IDs can repeat after restart. Its native decode rate excludes the first output token, so aggregate with `sum(output_tokens - 1) / sum(decode_seconds)` for requests with more than one output token. Keep prompt and total times alongside decode. Count accepted drafts only in the acceptance ratio, never as additional delivered tokens. Preserve final timings and identify cancellations, incomplete requests and the snapshot cutoff. The [sanitized Gemma timing rows](benchmarks/gemma4-mtp.csv) show this accounting.
+
+An MTP comparison needs the same model, hardware/backend, main placement, context, prompt/cache state, sampler and output workload. Interleave repeated baseline/candidate runs when thermal or paging noise matters. Different user requests can establish observed throughput, but their ratio cannot establish a causal MTP gain. Record quality separately; repetitive output can be fast and highly accepted.
 
 ## Acceptance and evidence
 

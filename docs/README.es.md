@@ -16,6 +16,7 @@ Empieza por [AGENTS.md](../AGENTS.md) y el [skill común de LocalForgeLLM](../SK
 | Interpretar una tarea, estudiar una implementación o retomar un entorno | [Proceso del agente y registro del entorno](agent-workflow.md) |
 | Instalar un modelo publicado y sus dependencias | [Nivel 1 — instalación](llm/install.md) |
 | Cambiar contexto, distribución, rendimiento o comportamiento MoE | [Nivel 2 — ajuste y adaptación](llm/tune.md) |
+| Descargar un asistente compatible; activar, desactivar o diagnosticar la especulación | [MTP: operaciones, memoria y calidad](implementations/mtp.md) |
 | Convertir, calibrar y cuantizar pesos completos | [Nivel 3 — construcción](llm/build.md) |
 | Elegir un motor o método de procesamiento de pesos | [Motores](implementations/engines.md) · [APEX](implementations/apex.md) |
 | Conectar o personalizar un agente y su interfaz | [Contratos de interfaz](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
@@ -139,3 +140,9 @@ Qwen generó 7,820 tokens en 28 solicitudes completadas. La velocidad ponderada 
 - **[FreeToken](https://arxiv.org/html/2608.16157v1#S5):** los autores publican 39.3 tokens/s en una RTX 4060 Laptop de 8 GB + i9-13900H, 32 GiB de LPDDR5, NVFP4 y una tarea de programación con OpenCode. La RAM instalada no es una medición del consumo del proceso.
 
 Nuestra velocidad de Qwen es **2.13×** la velocidad en caliente citada de Colibri y **un 46.3% inferior** a la de FreeToken. Las filas describen distintas CPU, formatos, tareas y formas de calcular la media. Nuestra cifra de memoria y la de Colibri son RSS del proceso; los 32 GiB de FreeToken son capacidad instalada. Los 11 GiB de Gemma son un límite del servicio que incluye la caché de archivos. Conserva estas definiciones al comparar configuraciones.
+
+## Actualización de Gemma MTP — 11 de septiembre
+
+El mismo perfil APEX con un asistente MTP Q8 separado registró **14.83 tokens/s** en dos solicitudes y **15.03 tokens/s** durante los 102.05 s de generación de la respuesta larga. Se conservaron la ventana de 32K y la distribución de los pesos principales; el contexto máximo observado fue de 2265 tokens. La diferencia de **+51.1%** frente a la solicitud anterior sin MTP no es una ganancia causal aislada: las solicitudes difieren. La evaluación formal de calidad, visión y herramientas con MTP sigue pendiente.
+
+[Comparación, dos infografías en inglés, recursos y fuentes](benchmarks/gemma4-mtp.md) · [Mediciones numéricas](benchmarks/gemma4-mtp.csv) · [Descargar, activar y desactivar MTP](implementations/mtp.md)

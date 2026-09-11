@@ -8,6 +8,8 @@ Recover the user's stack record, active process/service, model files and client 
 
 For a context adjustment, follow [tuning](llm/tune.md). For a new quantization, follow [building](llm/build.md). Updating an interface should not automatically replace the model or its launch profile.
 
+For MTP downloads or switching, use [MTP operations](implementations/mtp.md#operate-an-existing-stack). Enable a candidate derived from the saved baseline; disable by restoring the command without speculative options. Preserve the main model, placement, context and client mapping. Verify the effective mode after the owned service restarts; a startup check is separate from the user's quality and speed tests.
+
 ## Update with a recoverable candidate
 
 1. Save the working launch/client configuration and identify the current binaries, model hashes and service ownership. Back up persistent state before migrations that alter it.

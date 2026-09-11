@@ -39,6 +39,18 @@ Qwen: 28 requests, up to 29,087 context tokens. Gemma: one request with vision e
 
 Our Qwen rate is **2.13×** [Colibri's reported warm rate](https://github.com/JustVugg/colibri/blob/main/docs/qwen36-cuda-tier.md) and **46.3% below** [FreeToken's reported rate](https://arxiv.org/html/2608.16157v1#S5), across the configurations shown above. A 35B model runs here with **13.43 GiB peak RSS and 4.07 GiB model VRAM**. [Settings, measurement definitions and sources →](docs/README.md#comparison-with-colibri-and-freetoken)
 
+## Gemma 4 with MTP
+
+**September 11 update:** the same RTX 4060 / Ryzen 5 5600 stack measured **14.83 tok/s** across two user requests with MTP. The longer response logged **1535 output tokens over 102.05 seconds of decode: 15.03 tok/s**. The target remains **Heretic APEX I-Balanced**; **Q8_0 is the separate MTP head**. Main CPU/GPU placement and the configured 32K context were retained.
+
+![Gemma 4 deployment comparison: our APEX plus MTP stack, QAT CUDA and Vulkan on another 8 GB GPU, full Q8 on GB10, and a FreeToken report on a 16 GB GPU. Each row names its weights, hardware and evidence scope.](docs/assets/gemma4-comparison.svg)
+
+![Gemma MTP timing summary: 14.83 tok/s weighted, 15.03 on the long response, and an observed 51.1 percent difference from a preceding no-MTP request. Different requests prevent attributing this difference solely to MTP.](docs/assets/gemma4-mtp.svg)
+
+The preceding no-MTP request measured **9.81 tok/s**. The **+51.1% observed difference is not a controlled MTP gain**: prompts and output lengths differed. Maximum observed live context was 2265 tokens; formal quality and full-window tests remain pending. The separate head added 425.34 MiB of logged GPU weights and 211.10 MiB of GPU compute allocations; these are not whole-process peak measurements.
+
+[Comparison, resource accounting and sources](docs/benchmarks/gemma4-mtp.md) · [Numeric timing data](docs/benchmarks/gemma4-mtp.csv) · [Agent workflow: download a matching head, enable, disable and diagnose MTP](docs/implementations/mtp.md)
+
 ## Documentation
 
 [Agent skill](SKILL.md) · [Framework manual](docs/README.md#agent-manual) · [English documentation](docs/README.md) · [Launch profiles](docs/README.md#launch-profiles) · [Measurement methodology](docs/README.md#resource-use-and-methodology) · [Comparison details](docs/README.md#comparison-with-colibri-and-freetoken)

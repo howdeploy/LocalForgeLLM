@@ -16,6 +16,7 @@
 | 分析任务、学习新实现或继续维护已有技术栈 | [智能体流程与技术栈记录](agent-workflow.md) |
 | 安装已发布的模型及依赖项 | [第 1 层 — 安装](llm/install.md) |
 | 调整上下文、计算分配、性能或 MoE 行为 | [第 2 层 — 调优与适配](llm/tune.md) |
+| 下载匹配的助手，启用、关闭或排查推测解码 | [MTP：操作、内存与质量](implementations/mtp.md) |
 | 转换、校准及量化完整权重 | [第 3 层 — 构建](llm/build.md) |
 | 选择引擎或权重处理方法 | [引擎](implementations/engines.md) · [APEX](implementations/apex.md) |
 | 连接或定制智能体与交互界面 | [接口约定](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
@@ -139,3 +140,9 @@ Qwen 在 28 个已完成请求中生成了 7,820 token。按照 llama.cpp 对首
 - **[FreeToken](https://arxiv.org/html/2608.16157v1#S5)：** 作者报告在 RTX 4060 Laptop 8 GB + i9-13900H、32 GiB LPDDR5 上达到 39.3 token/s，使用 NVFP4 和 OpenCode 编程任务。安装的内存容量不是进程内存占用的实测值。
 
 我们的 Qwen 速度为上述 Colibri 热状态速度的 **2.13 倍**，比上述 FreeToken 速度**低 46.3%**。各行使用的 CPU、格式、任务和平均方式不同。我们与 Colibri 的内存数值是进程 RSS；FreeToken 的 32 GiB 是安装容量。Gemma 的 11 GiB 是包含文件缓存的服务上限。比较配置时请保留这些指标定义。
+
+## Gemma MTP 更新 — 9 月 11 日
+
+同一 APEX 主模型配置加上独立 Q8 MTP 助手后，两个请求的加权解码速度为 **14.83 token/s**，长回复在 102.05 秒解码期间达到 **15.03 token/s**。32K 窗口和主模型权重分布保持不变；最大实际上下文为 2265 token。相对于此前未启用 MTP 的请求，观察到 **+51.1%** 差异，但请求不同，因此不是独立的因果增益。MTP 的正式质量、视觉和工具调用评估仍待完成。
+
+[对比、两张英文信息图、资源与来源](benchmarks/gemma4-mtp.md) · [数值测量](benchmarks/gemma4-mtp.csv) · [下载、启用和关闭 MTP](implementations/mtp.md)

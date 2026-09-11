@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="784" viewBox="0 0 960 784" role="img" aria-labelledby="title description">
+  <title id="title">Gemma 4 MTP: measured session change</title>
+  <desc id="description">Our RTX 4060 8 GB, Ryzen 5 5600 deployment with APEX I-Balanced and a Q8 MTP assistant measured 14.83 tokens per second across two requests and 15.03 over a 102.05-second decode. The preceding no-MTP request measured 9.81. The observed difference is 51.1 percent, but different prompts mean it is not a controlled MTP gain. A separate QAT CUDA experiment on RTX 2070 Max-Q reports 23.1 to 24.0 at temperature 1, within noise, and 22.9 to 27.1 at greedy sampling. Main placement stayed fixed locally; quality and full 32K input remain unvalidated.</desc>
+  <rect width="960" height="784" fill="#fafafa"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
+    <text x="32" y="42" font-size="26" font-weight="700">Gemma 4 / MTP session change</text>
+    <text x="32" y="72" font-size="15" fill="#414141">RTX 4060 8 GB / Ryzen 5 5600 / APEX I-Balanced / September 11, 2026</text>
+    <g fill="none" stroke="#c1c1c1">
+      <path d="M32 100H928M32 218H928M320 100V218M624 100V218"/>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="128">MTP / WEIGHTED DECODE</text>
+      <text x="344" y="128">LONG RESPONSE / DECODE</text>
+      <text x="648" y="128">OBSERVED DIFFERENCE</text>
+    </g>
+    <g font-size="34" font-weight="700">
+      <text x="32" y="174">14.83 tok/s</text>
+      <text x="344" y="174">15.03 tok/s</text>
+      <text x="648" y="174">+51.1%</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="200">2 requests / 1835 output tokens</text>
+      <text x="344" y="200">1535 output tokens / 102.05 s</text>
+      <text x="648" y="200">Different requests; not an A/B</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="252">REQUEST / MODE</text>
+      <text x="400" y="252">OUTPUT TOKENS</text>
+      <text x="608" y="252">DECODE TIME</text>
+      <text x="808" y="252">TOK/S</text>
+    </g>
+    <g fill="none" stroke="#c1c1c1">
+      <path d="M32 268H928M32 322H928M32 376H928M32 430H928"/>
+    </g>
+    <g font-size="17">
+      <text x="32" y="302">B1 / no MTP</text>
+      <text x="32" y="356">M1 / MTP depth 2</text>
+      <text x="32" y="410">M2 / MTP depth 2</text>
+      <text x="400" y="302">171</text>
+      <text x="400" y="356">300</text>
+      <text x="400" y="410">1535</text>
+      <text x="608" y="302">17.32 s</text>
+      <text x="608" y="356">21.58 s</text>
+      <text x="608" y="410">102.05 s</text>
+    </g>
+    <g font-size="22" font-weight="600">
+      <text x="808" y="302">9.81</text>
+      <text x="808" y="356">13.86</text>
+      <text x="808" y="410">15.03</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="456">Rate = sum(output tokens - 1) / sum(decode seconds). Prompt time excluded.</text>
+      <text x="32" y="478">M2 total: 149.34 s. Accepted drafts: 975 / 1718 (56.75%) across M1 + M2.</text>
+      <text x="32" y="500">32K configured; max observed live context 2265. Formal quality checks pending.</text>
+    </g>
+    <text x="32" y="542" font-size="18" font-weight="600">Published MTP controls / a different 8 GB rig</text>
+    <text x="32" y="566" font-size="13" fill="#414141">RTX 2070 Max-Q / QAT 4-bit / CUDA / 32K / depth 2 / repeated coding test</text>
+    <g fill="none" stroke="#c1c1c1">
+      <path d="M32 584H928M32 662H928M480 584V662"/>
+    </g>
+    <g font-size="19" font-weight="600">
+      <text x="32" y="614">Temp 1: 23.1 → 24.0 / +3.9%</text>
+      <text x="504" y="614">Greedy: 22.9 → 27.1 / +18.3%</text>
+    </g>
+    <g font-size="13" fill="#414141">
+      <text x="32" y="642">Within the author's reported noise</text>
+      <text x="504" y="642">Repeated paired baseline/candidate runs</text>
+      <text x="32" y="690">Same placement: all main GPU layers / first 27 layers' experts on CPU.</text>
+      <text x="32" y="712">Extra head allocations: 425.34 MiB GPU weights + 211.10 MiB GPU compute.</text>
+      <text x="32" y="752">Timings, source links and limits: docs/benchmarks/gemma4-mtp.md</text>
+    </g>
+  </g>
+</svg>

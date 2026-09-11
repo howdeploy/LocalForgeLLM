@@ -62,6 +62,8 @@ hf download "$MODEL_REPO" "$MODEL_FILENAME" \
 
 Verify file size/completion and record the SHA-256. Preserve original artifact names in the record. A renamed local file needs an explicit mapping to its source. Do not infer projector compatibility from similar names.
 
+If MTP is requested, follow [head discovery and download](../implementations/mtp.md#download-a-compatible-head). Some targets already contain the head; others need a separate assistant GGUF. Match the checkpoint variant and runtime contract before downloading. A vision projector is a different artifact, and Q8 in the head's filename does not describe the main model's quantization.
+
 ## Start a baseline and connect it
 
 For a compatible GGUF and llama.cpp build, this is a small initial launch, not a tuned recommendation for every model:
