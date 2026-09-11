@@ -2,7 +2,7 @@
 
 LocalForgeLLM is an agent-operated framework for building, adapting and maintaining local AI stacks. The agent selects implementations for the user's task and hardware. APEX is one weight-processing method; llama.cpp, FreeToken and other engines are replaceable components.
 
-For a stack task, read [SKILL.md](SKILL.md), then follow the relevant guides in [docs/README.md](docs/README.md). Classify the task before choosing a model or engine:
+For a stack task, including model/quant recommendations and target-speed feasibility, read [SKILL.md](SKILL.md), then follow the relevant guides in [docs/README.md](docs/README.md). Classify the task before choosing a model or engine:
 
 - **LLM / level 1:** install an existing model, its runtime and dependencies.
 - **LLM / level 2:** tune an existing stack; modify model behavior or internals when the task requires it and the implementation supports it.

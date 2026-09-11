@@ -37,6 +37,25 @@ Compare compatible candidates against the same requested workload, not against a
 
 A faster implementation wins only if it still meets the task's quality and resource constraints. Record why the chosen candidate is preferable. Reuse our [RTX 4060 examples](README.md#launch-profiles) as a starting point only when their assumptions match.
 
+For a memory or speed decision, show the actual budget: free RAM/VRAM after other applications, weight placement, KV/recurrent state, working buffers and remaining headroom. File size is only an initial capacity estimate. Inspect tensor roles and loading allocations before treating it as resident or per-token memory traffic.
+
+When weights exceed available VRAM, compare the runtime's supported whole-layer offload and finer placement (dense FFN or MoE experts on CPU, tensor overrides where supported). Record the quant, runtime/backend, context, threads, placement, estimated/measured RAM/VRAM and prompt/decode results for each candidate. Dense CPU weights may be used on every token; MoE activates a subset. Existing local measurements are comparison evidence, not transferable speed predictions.
+
+For a hard throughput target, define whether it means typical/aggregate speed or a minimum across the tested requests. Mark unrun candidates as estimates and do not declare a quant suitable from VRAM fit alone. If asked only for an assessment, state the next discriminating benchmark without claiming it was run.
+
+## Register the skill
+
+Project instructions make this skill discoverable inside the checkout. To make it available to Codex in other projects, register the complete repository in the user skill directory; do not copy only `SKILL.md`. [Codex supports symlinked skill folders](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills):
+
+```bash
+mkdir -p "$HOME/.agents/skills"
+ln -s /absolute/path/to/LocalForgeLLM "$HOME/.agents/skills/localforgellm"
+```
+
+Use the real checkout path. Inspect an existing destination instead of overwriting it. Verify `localforgellm` appears through `/skills` or the app-server `skills/list` with a working directory outside the checkout; a valid symlink alone does not prove discovery. Codex detects changes automatically; restart if its catalog remains stale. Other hosts have their own discovery rules.
+
+Registration provides the name and description for selection; the agent must still read this skill and execute its workflow. If a session already loaded `SKILL.md`, missing global registration does not explain skipped comparison or validation.
+
 ## Keep a local stack record
 
 Use the user's existing location and format when present. Otherwise create `.local/stacks/<stack-name>/` inside this checkout when performing an actual stack task. This directory is ignored by Git. Keep the record small and concrete:

@@ -25,6 +25,8 @@ Use the selected engine's own parameters. The examples below are grounded in the
 | `--ctx-size`, `--parallel` | Requested context and concurrent slots; inspect effective per-slot capacity rather than assuming a division rule across releases |
 | `--gpu-layers`, `--device` | GPU placement and devices; confirm the loading log and observed memory |
 | `--n-cpu-moe N` | Keep MoE weights of the first N layers on CPU; N counts layers, not active experts |
+| `--n-cpu-ffn N` | Keep dense FFN weights of the first N layers on CPU; available in the inspected b10883 server; verify tensor matches and allocations |
+| `--override-tensor` | Place matching tensors in a supported backend buffer; inspect exact tensor names and precedence before combining overrides |
 | `--threads`, `--threads-batch` | CPU work for generation and prompt processing; benchmark, since more threads can increase contention |
 | `--batch-size`, `--ubatch-size` | Logical and physical prompt batches; affect scratch memory, prompt speed and multimodal processing |
 | `--cache-type-k`, `--cache-type-v` | KV precision; support and quality depend on architecture/backend |
@@ -34,6 +36,10 @@ Use the selected engine's own parameters. The examples below are grounded in the
 | `--fit` | Automatic fitting of eligible settings; explicit overrides may constrain what it can adjust |
 
 A useful order is: establish correct output → fit weights with headroom → set the required context and output allowance → tune placement and KV format → tune prompt batches and threads → test real concurrency. If an engine's native auto-tuning already solves the task, keep it and record the effective result.
+
+For a dense model larger than free VRAM, compare whole-layer placement with `--gpu-layers all --n-cpu-ffn N`, choosing N from the tensor budget and confirming the loading log. The latter can retain attention and recurrent tensors on the GPU while selected FFNs execute on CPU. It preserves the model architecture and does not provide MoE's sparse per-token computation. More available RAM makes a placement possible; CPU memory bandwidth, quant kernels and synchronization still determine its speed.
+
+The dense-FFN option was checked against b10883's `--help` and [argument implementation at 91f6a6cf3](https://github.com/ggml-org/llama.cpp/blob/91f6a6cf3/common/arg.cpp). Check the actual executable: `llama-bench` and `llama-server` may expose different options in the same release. Compare placements with the same quant, workload, context, cache types and headroom before changing quantization. Test speculative/MTP decoding separately when the model and backend support it; its extra memory and draft acceptance may improve or reduce throughput.
 
 Use resource limits only with their actual meaning. A systemd `MemoryMax` limit includes cgroup-charged cache and can kill the service; it is not a model compressor, a RAM reservation or a process-RSS measurement. Follow the working [Gemma example](../README.md#gemma) only when its assumptions match.
 

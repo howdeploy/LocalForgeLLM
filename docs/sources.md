@@ -7,6 +7,7 @@ Implementation documentation and relevant source paths were inspected on **Septe
 | Project | Inspected source | Main entry points |
 |:--|:--|:--|
 | llama.cpp / llama UI | [41fc7584f0c1](https://github.com/ggml-org/llama.cpp/tree/41fc7584f0c1d72d9cc1ac46ccae8defc1587f0f) | `docs/build.md`, `tools/server/`, `tools/quantize/`, `tools/imatrix/`, `tools/ui/`, `src/models/` |
+| llama.cpp b10883 placement follow-up, September 11, 2026 | [91f6a6cf3](https://github.com/ggml-org/llama.cpp/tree/91f6a6cf3) | Installed server/bench `--help`, `common/arg.cpp`, `common/common.h`, `src/llama-model.cpp`, `src/models/qwen35.cpp`; dense-FFN placement and graph, not a new model throughput result |
 | APEX | [636cec7e3f8d](https://github.com/localai-org/apex-quant/tree/636cec7e3f8d308e4162ab2bd5ec4b56807dd806) | `scripts/generate_config.sh`, `scripts/quantize.sh`, sensitivity/allocation scripts |
 | FreeToken | [fb7f732de08a](https://github.com/FlashML-org/FreeToken/tree/fb7f732de08a3247c397f90d932f7e69b9f63600) | `docs/install.md`, `docs/cli.md`, `docs/models.md`, `python/freetoken/` |
 | Colibri | [fd93c41aa6ae](https://github.com/JustVugg/colibri/tree/fd93c41aa6ae2c7d1cc1a1e2d6b79dbe6d341708) | Family guides, `c/coli`, family engine/converter |

@@ -1,18 +1,19 @@
 ---
 name: localforgellm
-description: Build, tune, update and repair local LLM stacks for the user's hardware, including MoE models, inference engines, weight processing and agent interfaces. Use for local model installation, performance or context tuning, derived model builds, and connecting Pi, OpenShell, llama UI or Hermes. Generative image, video and audio workflows are a planned branch.
+description: Choose local LLM models and quantizations for the user's real hardware and target tokens per second; compare CPU/RAM/GPU placement. Build, tune, update and repair dense or MoE stacks, process weights, and connect Pi, OpenShell, llama UI or Hermes. Use for model recommendations, memory/speed feasibility, installation and context tuning. Generative image, video and audio workflows are a planned branch.
 ---
 
 # LocalForgeLLM
 
 Turn the user's request into a working, reproducible local AI stack. Select the model, engine, weight format and interface together; measure the result on the intended workload. Use existing implementations and their native configuration before writing a custom integration.
 
-This skill belongs to the complete LocalForgeLLM repository. Resolve the links below relative to this file. Keep `docs/` with the skill; copying this file alone loses its operational references. Agents that read `AGENTS.md` discover this entry automatically; in other clients, explicitly ask the agent to read this file. Native skill registration depends on the host agent's discovery rules.
+This skill belongs to the complete LocalForgeLLM repository. Resolve the links below relative to this file. Keep `docs/` with the skill; copying this file alone loses its operational references. Project `AGENTS.md` directs agents here. For discovery outside this checkout, follow [native skill registration](docs/agent-workflow.md#register-the-skill).
 
 ## Choose the work
 
 | Request | Route | Result |
 |:--|:--|:--|
+| Recommend a model/quant or assess a target tok/s | [Candidate comparison](docs/agent-workflow.md#select-a-candidate) → [Level 2](docs/llm/tune.md) | Hardware/resource budget and compared placements; measured speed or an explicit estimate with a validation step |
 | Install a model or build a stack for a task | [Level 1](docs/llm/install.md) | Compatible dependencies, weights, server and working client |
 | Change context, memory, speed or model behavior | [Level 2](docs/llm/tune.md) | Measured configuration or a separately identified model modification |
 | Create a custom model from full weights | [Level 3](docs/llm/build.md) | Derived artifact with source revision, recipe and quality results |
@@ -25,8 +26,9 @@ Levels describe the nature of the task, not mandatory steps. Installing a publis
 ## Execute
 
 1. Read [architecture](docs/architecture.md) and [agent workflow](docs/agent-workflow.md). Extract the task, capabilities, existing choices, hardware limits and intended interface. Ask only for missing information that changes the result; inspect discoverable machine state yourself.
-2. Find an existing stack record and verify its processes, paths, versions and endpoint. Preserve the working baseline. On a new machine, inventory hardware before selecting an implementation.
+2. Find an existing stack record and verify its processes, paths, versions and endpoint, including stacks outside this checkout. Identify whether process/device inspection sees the host or only a sandbox. Preserve the working baseline and inventory actual available resources before selecting an implementation.
 3. Read the relevant level guide, [engine selection](docs/implementations/engines.md), and the selected model/runtime's own documentation. Verify exact architecture, checkpoint format, backend, context, template and tool-call support. The catalog is a starting point, not a closed compatibility list.
+   For a model/quant or speed decision, compare concrete CPU/GPU placements and compatible candidates against the existing measurements. Budget weights, KV/recurrent state, buffers and application headroom in both RAM and VRAM. A GGUF larger than VRAM is a placement problem to investigate, not a reason by itself to reject it or select the smallest quant. Keep the user's selected model/version fixed unless they agree to a replacement.
 4. Perform the requested work. Save concrete commands, dependency versions and effective settings in the stack's local record. Use isolated environments and a candidate output/profile when replacing something that already works.
 5. Follow [validation](docs/validation.md): check the endpoint, requested capabilities, actual client tool cycle, speed, memory and the target context. A plain chat response does not prove a coding agent works.
 6. Promote the candidate after it meets the user's criteria. Record the result and rollback procedure. Give the user the exact start/stop/connect instructions and measured limits.
@@ -39,6 +41,7 @@ Levels describe the nature of the task, not mandatory steps. Installing a publis
 - Advertised model context, server context per slot, client context and output budget must agree. Cumulative session tokens are not the current context size.
 - “Build from scratch” in level 3 means constructing a derived deployment artifact from existing full weights. Training a new base model requires a separate explicit training task, data and compute plan.
 - Completion means a working result for the requested workload. Report source-inspected, estimated and measured facts separately. Never borrow benchmark speed or memory from another machine as a local result.
+- An advice-only request can end with a comparative assessment and clearly identified unknowns. A required speed is verified only by local measurements at a stated context and workload; file size, an accepted flag or another model's result cannot establish it.
 
 ## Extend and maintain
 
