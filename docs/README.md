@@ -16,6 +16,7 @@ Start with [AGENTS.md](../AGENTS.md) and the shared [LocalForgeLLM skill](../SKI
 | Interpret a task, discover an implementation or resume a stack | [Agent workflow and stack record](agent-workflow.md) |
 | Install a published model and its dependencies | [Level 1 — install](llm/install.md) |
 | Change context, placement, performance or MoE behavior | [Level 2 — tune and adapt](llm/tune.md) |
+| Select, build, switch or compare CUDA and Vulkan | [Backend workflow and measured adaptation](implementations/engines.md#cuda-and-vulkan) |
 | Download a matching head; enable, disable or diagnose speculative decoding | [MTP operations, memory and quality](implementations/mtp.md) |
 | Convert/calibrate/quantize full weights | [Level 3 — build](llm/build.md) |
 | Choose an engine or an optional weight-processing method | [Engines](implementations/engines.md) · [APEX](implementations/apex.md) |
@@ -153,3 +154,5 @@ Our Qwen rate is **2.13×** Colibri's cited warm rate and **46.3% below** FreeTo
 The September 11 no-MTP request measured 9.81 tok/s; two different MTP requests averaged 14.83 tok/s. The longer response sustained 15.03 tok/s during decode, but also took 47.29 s to process its new prompt. Main offload, CPU expert placement and the 32K allocation stayed fixed. Different requests and cache state prevent treating the +51.1% gap as causal MTP uplift. Formal quality checks remain pending.
 
 The [case study](benchmarks/gemma4-mtp.md) includes full-Q8 and QAT alternatives, the external measurements' methods, Colibri's missing Gemma result, FreeToken's modality limits and the [sanitized timing data](benchmarks/gemma4-mtp.csv). Follow [MTP operations](implementations/mtp.md) for artifact discovery, verified downloads, switching and rollback.
+
+The later [CUDA, MTP and RAM adaptation](benchmarks/gemma4-cuda-mtp-ram.md) adds an English infographic and 19 sanitized timing records across eight phases. CUDA + MTP with a 20 GiB cap averaged 18.80 tok/s across four responses; the initial backend switch alone did not improve the observed rate. The report separates runtime compilation time from total setup time. Use the [backend workflow](implementations/engines.md#cuda-and-vulkan) to apply and test these choices on another stack.

@@ -51,6 +51,16 @@ The preceding no-MTP request measured **9.81 tok/s**. The **+51.1% observed diff
 
 [Comparison, resource accounting and sources](docs/benchmarks/gemma4-mtp.md) · [Numeric timing data](docs/benchmarks/gemma4-mtp.csv) · [Agent workflow: download a matching head, enable, disable and diagnose MTP](docs/implementations/mtp.md)
 
+## CUDA, MTP and RAM adaptation
+
+The later September 11 sessions reached **18.80 tok/s weighted decode** across four responses with CUDA, MTP and a 20 GiB service cap; the fastest completed response measured **19.38 tok/s**. The infographic tracks 19 responses across eight phases. These are observed session differences: changing requests and cache state prevents isolating a CUDA-only gain.
+
+![Gemma 4 adaptation across Vulkan, CUDA, MTP and RAM-cap changes, with observed decode rates and runtime build costs.](docs/assets/gemma4-cuda-mtp-ram.png)
+
+The initial CUDA compilation took **10 min 30.161 s** with four workers and 2.1 GiB peak build memory. Downloads, configuration and validation took additional time that was not fully recorded. The runtime was rebuilt; the existing GGUF weights were reused.
+
+[Phase table, methodology and timing data](docs/benchmarks/gemma4-cuda-mtp-ram.md) · [Agent workflow: build, switch and compare CUDA/Vulkan](docs/implementations/engines.md#cuda-and-vulkan)
+
 ## Documentation
 
 [Agent skill](SKILL.md) · [Framework manual](docs/README.md#agent-manual) · [English documentation](docs/README.md) · [Launch profiles](docs/README.md#launch-profiles) · [Measurement methodology](docs/README.md#resource-use-and-methodology) · [Comparison details](docs/README.md#comparison-with-colibri-and-freetoken)

@@ -37,6 +37,8 @@ Use the selected engine's own parameters. The examples below are grounded in the
 
 A useful order is: establish correct output → fit weights with headroom → set the required context and output allowance → tune placement and KV format → tune prompt batches and threads → test real concurrency. If an engine's native auto-tuning already solves the task, keep it and record the effective result.
 
+When comparing or switching CUDA/Vulkan, use the [backend workflow](../implementations/engines.md#cuda-and-vulkan): establish the result with equivalent placement, RAM cap and MTP first, then rebalance CPU/GPU/RAM for the selected backend. A backend change may alter buffers and memory headroom. Record any required placement changes and compare the resulting stacks without attributing the entire difference to the backend.
+
 For a dense model larger than free VRAM, compare whole-layer placement with `--gpu-layers all --n-cpu-ffn N`, choosing N from the tensor budget and confirming the loading log. The latter can retain attention and recurrent tensors on the GPU while selected FFNs execute on CPU. It preserves the model architecture and does not provide MoE's sparse per-token computation. More available RAM makes a placement possible; CPU memory bandwidth, quant kernels and synchronization still determine its speed.
 
 The dense-FFN option was checked against b10883's `--help` and [argument implementation at 91f6a6cf3](https://github.com/ggml-org/llama.cpp/blob/91f6a6cf3/common/arg.cpp). Check the actual executable: `llama-bench` and `llama-server` may expose different options in the same release. Compare placements with the same quant, workload, context, cache types and headroom before changing quantization.

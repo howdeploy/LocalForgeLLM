@@ -38,6 +38,8 @@ Prefer an official prebuilt release when it supports the target. Record its tag 
 
 For llama.cpp, the [build guide](https://github.com/ggml-org/llama.cpp/blob/41fc7584f0c1d72d9cc1ac46ccae8defc1587f0f/docs/build.md) covers CPU, CUDA, Vulkan, Metal and other backends. Select one appropriate backend; do not install every GPU toolkit. A Vulkan build needs Vulkan development libraries and a shader compiler; CUDA needs a compatible toolkit/driver; binary archives have their own runtime-library requirements.
 
+For CUDA/Vulkan selection or a backend change on an existing stack, follow the [build, switch and comparison workflow](../implementations/engines.md#cuda-and-vulkan). The Vulkan example below is one starting point, not the framework's default for every GPU.
+
 Example source build, run inside a checked-out llama.cpp revision after satisfying its Vulkan requirements:
 
 ```bash
