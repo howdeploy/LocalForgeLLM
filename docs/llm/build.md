@@ -1,6 +1,6 @@
 # Level 3 — build a derived model from full weights
 
-[Documentation](../README.md) · [APEX recipe](../implementations/apex.md)
+[Documentation](../README.md) · [APEX recipe](../implementations/apex.md) · [Recorded REAP → APEX build](../implementations/reap.md)
 
 Here “create a model from scratch” means constructing a new deployment artifact from existing full model weights: convert, calibrate, allocate precision, quantize, or apply another supported transformation. Reuse existing implementations and compose their stages. Training a new base model from random initialization is a separate task with a dataset, training recipe and compute budget.
 
@@ -56,6 +56,8 @@ Apply the matrix with the quantizer's `--imatrix` option. For per-tensor precisi
 The inspected quantizer supports `--max-buffer-size MiB` to bound the tensor-row quantization buffer. This is not a process-wide RAM cap; mappings, calibration data, outputs and other allocations still matter. If the APEX wrapper does not expose this option, invoke `llama-quantize` directly with the same reviewed tensor file. See [the actual CLI parser](https://github.com/ggml-org/llama.cpp/blob/41fc7584f0c1d72d9cc1ac46ccae8defc1587f0f/tools/quantize/quantize.cpp).
 
 ## Other transformations
+
+For the tools used in our rented-server Gemma rebuild, follow [REAP, APEX and expert caching](../implementations/reap.md): pinned full weights, architecture-specific REAP observation/pruning, BF16 conversion, fresh imatrix, exact tensor precision and held-out checks. The recorded 2.81% smaller GGUF is a storage result; the separate expert-cache gain comes from runtime placement. Gemma 4 required a local adapter at the inspected REAP revision.
 
 An adapter merge, expert/layer pruning pass, distillation or fine-tuning task needs its own implementation, data requirements and evaluation. Some require training; some are deterministic transforms. Use the user's requested operation and the [implementation discovery procedure](../agent-workflow.md#learn-an-implementation), and preserve architecture/tokenizer/adapter compatibility. Do not describe a metadata edit as a trained or distilled model.
 

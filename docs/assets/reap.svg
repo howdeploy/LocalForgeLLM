@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1620" viewBox="0 0 1600 1620" role="img" aria-labelledby="title description">
+<title id="title">Gemma 4 / prune, rebuild, place</title>
+<desc id="description">REAP124 + APEX I-Balanced. Storage and execution are separate experiments.. Rented RTX 4500 Ada 24 GB / Threadripper PRO 5995WX / September 12, 2026</desc>
+<rect width="1600" height="1620" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Gemma 4 / prune, rebuild, place</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">REAP124 + APEX I-Balanced. Storage and execution are separate experiments.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Rented RTX 4500 Ada 24 GB / Threadripper PRO 5995WX / September 12, 2026</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<path d="M64.0 258H408.0" stroke="#111111" fill="none"/>
+<text x="64.0" y="291" font-size="19" fill="#555555" text-anchor="start">GGUF / STORAGE CHANGE</text>
+<text x="64.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">-2.81%</text>
+<text x="64.0" y="391" font-size="19" fill="#555555" text-anchor="start">19.51 to 18.96 GB</text>
+<text x="64.0" y="420" font-size="19" fill="#555555" text-anchor="start">124 of 128 experts/layer</text>
+<path d="M432.0 258H776.0" stroke="#111111" fill="none"/>
+<text x="432.0" y="291" font-size="19" fill="#555555" text-anchor="start">PRUNING / DECODE CHANGE</text>
+<text x="432.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">-0.52%</text>
+<text x="432.0" y="391" font-size="19" fill="#555555" text-anchor="start">ABBA / no MTP</text>
+<text x="432.0" y="420" font-size="19" fill="#555555" text-anchor="start">No demonstrated speedup</text>
+<path d="M800.0 258H1144.0" stroke="#111111" fill="none"/>
+<text x="800.0" y="291" font-size="19" fill="#555555" text-anchor="start">EXPERT CACHE / DECODE</text>
+<text x="800.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">+8.07%</text>
+<text x="800.0" y="391" font-size="19" fill="#555555" text-anchor="start">Same fork comparison</text>
+<text x="800.0" y="420" font-size="19" fill="#555555" text-anchor="start">MTP2 / 8 runs per config</text>
+<path d="M1168.0 258H1512.0" stroke="#111111" fill="none"/>
+<text x="1168.0" y="291" font-size="19" fill="#555555" text-anchor="start">EXPERT CACHE / LATENCY</text>
+<text x="1168.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">-3.91%</text>
+<text x="1168.0" y="391" font-size="19" fill="#555555" text-anchor="start">Full request time</text>
+<text x="1168.0" y="420" font-size="19" fill="#555555" text-anchor="start">RSS increased 2.43 GiB</text>
+<text x="64" y="487" font-size="22" fill="#111111" text-anchor="start" font-weight="700">01 / BUILD LINEAGE</text>
+<path d="M64 505H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="553" font-size="28" fill="#111111" text-anchor="start" font-weight="700">Heretic BF16  →  REAP124  →  BF16 GGUF  →  fresh imatrix  →  APEX</text>
+<text x="64" y="602" font-size="20" fill="#555555" text-anchor="start">30 layers / top-k stays 8 / 44,032 imatrix tokens / exact tensor recipe / native llama-quantize</text>
+<text x="64" y="638" font-size="20" fill="#555555" text-anchor="start">Pruning control: 37.46 → 37.26 tok/s. Experimental quality gate; no proved &lt;=5% loss bound.</text>
+<text x="64" y="723" font-size="22" fill="#111111" text-anchor="start" font-weight="700">02 / SAME REAP124 WEIGHTS — CHANGE EXPERT PLACEMENT</text>
+<path d="M64 741H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="772" font-size="19" fill="#555555" text-anchor="start">512 input / 256 output / 32K / 6 threads / Flash / Q8 KV / MTP2 / no prompt cache</text>
+<text x="72" y="815" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Stock b10883 / 4 GPU MoE blocks</text>
+<text x="72" y="846" font-size="18" fill="#555555" text-anchor="start">Reference runtime</text>
+<text x="72" y="872" font-size="18" fill="#555555" text-anchor="start">Prefill 284.69 tok/s / full request 10.045 s</text>
+<text x="975" y="830" font-size="36" fill="#111111" text-anchor="end" font-weight="700">30.93</text>
+<text x="975" y="857" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 824H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="816" width="346.40" height="16" fill="#999999"/>
+<path d="M64 884H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="923" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Same fork / 4 GPU MoE blocks</text>
+<text x="72" y="954" font-size="18" fill="#555555" text-anchor="start">Control for the cache comparison</text>
+<text x="72" y="980" font-size="18" fill="#555555" text-anchor="start">Prefill 293.35 tok/s / full request 10.117 s</text>
+<text x="975" y="938" font-size="36" fill="#111111" text-anchor="end" font-weight="700">30.47</text>
+<text x="975" y="965" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 932H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="924" width="341.25" height="16" fill="#999999"/>
+<path d="M64 992H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="1031" font-size="24" fill="#111111" text-anchor="start" font-weight="700">2,200 MiB cache / normal prefill</text>
+<text x="72" y="1062" font-size="18" fill="#555555" text-anchor="start">Better decode, slower full request</text>
+<text x="72" y="1088" font-size="18" fill="#555555" text-anchor="start">Prefill 121.78 tok/s / full request 12.246 s</text>
+<text x="975" y="1046" font-size="36" fill="#111111" text-anchor="end" font-weight="700">31.72</text>
+<text x="975" y="1073" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1040H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1032" width="355.27" height="16" fill="#999999"/>
+<path d="M64 1100H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="1139" font-size="24" fill="#111111" text-anchor="start" font-weight="700">2,200 MiB cache / CPU prefill</text>
+<text x="72" y="1170" font-size="18" fill="#555555" text-anchor="start">Dense prefill disabled</text>
+<text x="72" y="1196" font-size="18" fill="#555555" text-anchor="start">Prefill 77.72 tok/s / full request 14.428 s</text>
+<text x="975" y="1154" font-size="36" fill="#111111" text-anchor="end" font-weight="700">32.54</text>
+<text x="975" y="1181" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1148H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1140" width="364.40" height="16" fill="#999999"/>
+<path d="M64 1208H1536" stroke="#cccccc" fill="none"/>
+<rect x="56" y="1215" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="1247" font-size="24" fill="#111111" text-anchor="start" font-weight="700">2,200 MiB cache / prefill bypass</text>
+<text x="72" y="1278" font-size="18" fill="#555555" text-anchor="start">475 hot experts / cold experts stay in RAM</text>
+<text x="72" y="1304" font-size="18" fill="#555555" text-anchor="start">Prefill 259.28 tok/s / full request 9.721 s</text>
+<text x="975" y="1262" font-size="36" fill="#111111" text-anchor="end" font-weight="700">32.93</text>
+<text x="975" y="1289" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1256H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1248" width="368.80" height="16" fill="#111111"/>
+<path d="M64 1316H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1414" font-size="22" fill="#111111" text-anchor="start" font-weight="700">WHY THE BEST CONFIGURATION HELPS</text>
+<path d="M64 1432H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1464" font-size="20" fill="#555555" text-anchor="start">Hot copies speed decode; prefill bypass limits the prompt penalty. Extra host RAM is the tradeoff.</text>
+<text x="64" y="1498" font-size="20" fill="#555555" text-anchor="start">Corrected strided profiler. Sequential hot/cold fallback observed. These are not RTX 4060 rates.</text>
+<path d="M64 1542H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1582" font-size="18" fill="#555555" text-anchor="start">DATA / docs/benchmarks/reap.csv     TOOLS + RECIPE + LIMITS / docs/implementations/reap.md</text>
+</g>
+</svg>

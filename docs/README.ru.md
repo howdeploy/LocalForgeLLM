@@ -4,6 +4,8 @@
   <a href="README.md">English</a> · <strong>Русский</strong> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.es.md">Español</a>
 </p>
 
+**September 18 update (English):** [Bonsai benchmarks](benchmarks/bonsai.md) · [REAP / APEX rebuild](implementations/reap.md) · [Jev API + browser-use](interfaces/jev.md) · [Updated graphics](assets/README.md).
+
 [К проекту](../README.ru.md) · [Установка](#установка) · [Профили запуска](#профили-запуска) · [Замеры](#замеры-на-rtx-4060)
 
 ## Руководство для агента

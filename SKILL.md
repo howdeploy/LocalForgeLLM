@@ -1,6 +1,6 @@
 ---
 name: localforgellm
-description: Choose local LLM models and quantizations for the user's real hardware and target tokens per second; compare CPU/RAM/GPU placement. Build, tune, update and repair dense or MoE stacks, process weights, and connect Pi, OpenShell, llama UI or Hermes. Use for model recommendations, memory/speed feasibility, installation, context tuning and MTP head downloads or switching. Generative image, video and audio workflows are a planned branch.
+description: Choose local LLM models and quantizations for the user's real hardware and target tokens per second; compare CPU/RAM/GPU placement. Build, tune and repair dense or MoE stacks with APEX, REAP, Bonsai ternary kernels and MTP; connect Pi, OpenShell, llama UI, Hermes and optional Jev API/browser-use tools. Use for model selection, memory/speed feasibility, installation, context tuning and derived weights. Generative image, video and audio workflows are a planned branch.
 ---
 
 # LocalForgeLLM
@@ -19,6 +19,9 @@ This skill belongs to the complete LocalForgeLLM repository. Resolve the links b
 | Select, build or switch CUDA/Vulkan | [Backend workflow](docs/implementations/engines.md#cuda-and-vulkan) | Compatible runtime/device, preserved model and rollback; backend, RAM and MTP effects compared separately |
 | Download MTP weights; enable, disable or diagnose speculation | [MTP operations](docs/implementations/mtp.md#operate-an-existing-stack) | Verified compatible head when needed, preserved main placement, effective mode and a working rollback |
 | Create a custom model from full weights | [Level 3](docs/llm/build.md) | Derived artifact with source revision, recipe and quality results |
+| Prune experts, rebuild APEX or cache individual experts | [REAP and expert-cache procedure](docs/implementations/reap.md) | Separate topology, precision and placement experiments with retained quality failures |
+| Fit or accelerate Ternary Bonsai 2 | [Bonsai runtime and cache recipe](docs/implementations/bonsai.md) | Verified packing/kernel pair, calibrated cache, actual context and measured memory |
+| Add Jev decisions, browser-use, evaluate Cua or reuse Hermes tools in llama UI | [Jev API and upstream implementations](docs/interfaces/jev.md) → [Native MCP and skills](docs/interfaces/llama-ui.md#reuse-hermes-tools-and-skills) | Host-side API/tool integration; local text model and harness ownership preserved; Cua mapping is source-checked, not locally deployed |
 | Update, resume, repair or replace a component | [Operations](docs/operations.md) | Working stack with a tested rollback path |
 | Connect an agent or customize its shell | [Interfaces](docs/interfaces/README.md) | Working client/harness connection and the requested extension |
 | Image, video or audio generation | [Generative branch](docs/generative/README.md) | Explain planned status; do not claim an implemented workflow |
@@ -39,6 +42,9 @@ Levels describe the nature of the task, not mandatory steps. Installing a publis
 
 - The coding agent orchestrates; the inference engine executes the model; the harness owns tools and history; OpenShell owns its execution environment and access rules.
 - APEX selects precision for weights. It is optional, is not an agent harness and is not a runtime optimizer. Read [APEX](docs/implementations/apex.md) only when using that method.
+- REAP prunes experts using calibration statistics; hot-expert caching places retained weights. Neither automatically lowers top-k. Our [rented-server experiment](docs/implementations/reap.md) reduced storage without a pruning speedup; caching had a separate measured gain and RAM cost.
+- Bonsai PTQ1_0 and PQ2_0 have different sizes and require compatible ternary kernels. Reuse the [measured profiles](docs/benchmarks/bonsai.md) as evidence with their actual hardware, cache, thinking mode and input/output lengths; do not transfer the subscriber's 5070 speed to the 4060.
+- Jev is a hosted typed-decision API, not the local chat model. Keep keys host-side and model-generated decisions within the harness's existing permissions. Typed choices do not prove task correctness; sharing MCP tools and skill text does not transplant Hermes or Pi lifecycle hooks.
 - CUDA and Vulkan are runtime backends. Follow the [backend workflow](docs/implementations/engines.md#cuda-and-vulkan) to check support, build/select a candidate and compare it on the actual hardware. Reuse compatible weights; switching backends does not itself convert or requantize the model. Keep placement, RAM cap and MTP fixed for the first comparison, then rebalance them separately. Never attribute a combined tuning result to CUDA alone.
 - MTP drafts tokens for target verification. Follow [MTP operations](docs/implementations/mtp.md#operate-an-existing-stack) to discover/download only a missing compatible head and switch the saved profile on or off. Preserve the main model's layers, CPU expert placement and context for an MTP-only request. A loaded head or high acceptance does not establish useful output or a speed gain; keep manual quality checks pending until the user's feedback. See the [Gemma case study](docs/benchmarks/gemma4-mtp.md) for measured results and their limits.
 - CPU/GPU placement does not change the number of experts selected by the learned router. Changing routing, pruning tensors and changing tensor precision have different compatibility and quality implications.

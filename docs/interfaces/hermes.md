@@ -4,6 +4,8 @@
 
 Hermes owns the agent loop, tools, sessions, memory/compaction and multiple user interfaces. The framework can connect Hermes to an independently managed local engine or use Hermes's own managed local-model path when that fits the task. Assign runtime ownership explicitly so two managers do not start, resize or replace the same server.
 
+To reuse selected Hermes MCP servers and skill text in Bonsai's bundled UI, follow [the llama UI bridge contract](llama-ui.md#reuse-hermes-tools-and-skills). This does not move Hermes sessions or memory into llama UI. Optional typed decisions and browser-use are covered by [Jev](jev.md).
+
 ## Install and select the runtime owner
 
 Use [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) and its selected release's installation instructions. The inspected `0.21.1` source requires Python `>=3.11,<3.14`; optional integrations have their own extras. For source development, use the checkout's `pyproject.toml` and lockfile in its own environment, not another engine's environment.

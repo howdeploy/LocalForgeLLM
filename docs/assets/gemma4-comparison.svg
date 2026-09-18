@@ -1,78 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="744" viewBox="0 0 960 744" role="img" aria-labelledby="title description">
-  <title id="title">Gemma 4 26B-A4B: deployment results</title>
-  <desc id="description">LocalForgeLLM with an APEX I-Balanced target and separate Q8 MTP head: 14.83 tokens per second on RTX 4060 8 GB, two user requests. Published references: QAT CUDA plus MTP 24.0 and QAT Vulkan about 4.9 on RTX 2070 Max-Q 8 GB; full Q8 via Ollama 45.2 on GB10 with 128 GB unified memory; FreeToken user report 179 after a local patch on RTX 4080 SUPER 16 GB. Different weights, workloads, hardware and evidence quality prevent a controlled ranking. Sources and methods: docs/benchmarks/gemma4-mtp.md.</desc>
-  <rect width="960" height="744" fill="#fafafa"/>
-  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
-    <text x="32" y="42" font-size="26" font-weight="700">Gemma 4 26B-A4B / deployment results</text>
-    <text x="32" y="72" font-size="15" fill="#414141">Same family. Different weights, hardware and workloads. September 2026.</text>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="112">SYSTEM / HARDWARE</text>
-      <text x="416" y="112">WEIGHTS / TEST SCOPE</text>
-      <text x="768" y="112">DECODE, TOK/S</text>
-    </g>
-    <g fill="none" stroke="#c1c1c1">
-      <path d="M32 128H928M32 224H928M32 320H928M32 416H928M32 512H928M32 608H928"/>
-      <path d="M392 96V608M744 96V608"/>
-    </g>
-    <g font-size="19" font-weight="600">
-      <text x="32" y="158">LocalForgeLLM</text>
-      <text x="32" y="254">llama.cpp / CUDA</text>
-      <text x="32" y="350">llama.cpp / Vulkan</text>
-      <text x="32" y="446">Ollama / full Q8</text>
-      <text x="32" y="542">FreeToken / user report</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="184">RTX 4060 8 GB / Ryzen 5 5600</text>
-      <text x="32" y="206">32 GB RAM / Vulkan b10883</text>
-      <text x="32" y="280">RTX 2070 Max-Q 8 GB / i7-8750H</text>
-      <text x="32" y="302">31 GB RAM / community setup [1]</text>
-      <text x="32" y="376">RTX 2070 Max-Q 8 GB / i7-8750H</text>
-      <text x="32" y="398">Earlier backend comparison [1]</text>
-      <text x="32" y="472">NVIDIA GB10 / 128 GB unified</text>
-      <text x="32" y="494">Ollama 0.20.3 / Docker [2]</text>
-      <text x="32" y="568">RTX 4080 SUPER 16 GB</text>
-      <text x="32" y="590">FreeToken 0.1.2 + local patch [3]</text>
-    </g>
-    <g font-size="15" font-weight="600">
-      <text x="416" y="158">Heretic APEX + Q8 MTP head</text>
-      <text x="416" y="254">QAT 4-bit + QAT MTP</text>
-      <text x="416" y="350">QAT 4-bit</text>
-      <text x="416" y="446">Q8_0 target / about 28 GB</text>
-      <text x="416" y="542">QAT UD-Q4_K_XL</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="416" y="184">19.51 GB target + 0.46 GB head</text>
-      <text x="416" y="206">32K configured / vision enabled</text>
-      <text x="416" y="280">~14 GB target / 32K / temp 1</text>
-      <text x="416" y="302">Repeated coding test / depth 2</text>
-      <text x="416" y="376">~14 GB target</text>
-      <text x="416" y="398">Different test from the MTP row</text>
-      <text x="416" y="472">Seven informal workloads</text>
-      <text x="416" y="494">128 GB system; not an 8 GB GPU</text>
-      <text x="416" y="568">Mostly Q4_0 tensors / offload</text>
-      <text x="416" y="590">Single report; no paired control</text>
-    </g>
-    <g font-size="28" font-weight="700">
-      <text x="768" y="164">14.83</text>
-      <text x="768" y="260">24.0</text>
-      <text x="768" y="356">~4.9</text>
-      <text x="768" y="452">45.2</text>
-      <text x="768" y="548">179</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="768" y="188">2 requests</text>
-      <text x="768" y="208">weighted decode</text>
-      <text x="768" y="284">trimmed mean</text>
-      <text x="768" y="308">author-reported</text>
-      <text x="768" y="380">author-reported</text>
-      <text x="768" y="476">author average</text>
-      <text x="768" y="572">patched report</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="636">Our main model is APEX I-Balanced. Q8 describes the separate MTP head.</text>
-      <text x="32" y="658">Colibri: Gemma 4 absent from the inspected model roster; no Gemma speed row.</text>
-      <text x="32" y="680">[1] ricardodeazambuja / 8 GB Gemma repo  [2] Subterra  [3] FreeToken issue #188</text>
-      <text x="32" y="716">Sources, timing data and capability limits: docs/benchmarks/gemma4-mtp.md</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title description">
+<title id="title">Gemma 4 / deployment references</title>
+<desc id="description">26B-A4B family. Distinct weights, hardware and evidence; higher decode is not a quality score.. Local CUDA update: 18.80 weighted tok/s / best completed-response average: 19.38 tok/s</desc>
+<rect width="1600" height="1200" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Gemma 4 / deployment references</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">26B-A4B family. Distinct weights, hardware and evidence; higher decode is not a quality score.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Local CUDA update: 18.80 weighted tok/s / best completed-response average: 19.38 tok/s</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="282" font-size="22" fill="#111111" text-anchor="start" font-weight="700">DECODE / CONFIGURATIONS NAMED</text>
+<path d="M64 300H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="331" font-size="19" fill="#555555" text-anchor="start">Same zero-based bar scale. External values are author reports, not reruns by LocalForgeLLM.</text>
+<rect x="56" y="345" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="377" font-size="24" fill="#111111" text-anchor="start" font-weight="700">LocalForgeLLM / CUDA + MTP2</text>
+<text x="72" y="408" font-size="18" fill="#555555" text-anchor="start">RTX 4060 8 GB / Ryzen 5 5600 / 32 GB RAM</text>
+<text x="72" y="434" font-size="18" fill="#555555" text-anchor="start">Heretic APEX 19.51 GB + Q8 head 0.46 GB / 4 replies</text>
+<text x="975" y="392" font-size="36" fill="#111111" text-anchor="end" font-weight="700">18.80</text>
+<text x="975" y="419" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 386H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="378" width="46.78" height="16" fill="#111111"/>
+<path d="M64 446H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="497" font-size="24" fill="#111111" text-anchor="start" font-weight="700">llama.cpp / community CUDA</text>
+<text x="72" y="528" font-size="18" fill="#555555" text-anchor="start">RTX 2070 Max-Q 8 GB / i7-8750H / 31 GB RAM</text>
+<text x="72" y="554" font-size="18" fill="#555555" text-anchor="start">QAT 4-bit + QAT MTP / 32K / temp 1 / trimmed mean</text>
+<text x="975" y="512" font-size="36" fill="#111111" text-anchor="end" font-weight="700">24.00</text>
+<text x="975" y="539" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 506H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="498" width="59.73" height="16" fill="#999999"/>
+<path d="M64 566H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="617" font-size="24" fill="#111111" text-anchor="start" font-weight="700">llama.cpp / community Vulkan</text>
+<text x="72" y="648" font-size="18" fill="#555555" text-anchor="start">Same RTX 2070 Max-Q rig / earlier backend report</text>
+<text x="72" y="674" font-size="18" fill="#555555" text-anchor="start">QAT 4-bit / approximately 4.9 / different workload</text>
+<text x="975" y="632" font-size="36" fill="#111111" text-anchor="end" font-weight="700">4.90</text>
+<text x="975" y="659" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 626H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="618" width="12.20" height="16" fill="#999999"/>
+<path d="M64 686H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="737" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Ollama / full Q8 reference</text>
+<text x="72" y="768" font-size="18" fill="#555555" text-anchor="start">NVIDIA GB10 / 128 GB unified memory / Ollama 0.20.3</text>
+<text x="72" y="794" font-size="18" fill="#555555" text-anchor="start">About 28 GB reported target / 7 informal workloads</text>
+<text x="975" y="752" font-size="36" fill="#111111" text-anchor="end" font-weight="700">45.20</text>
+<text x="975" y="779" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 746H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="738" width="112.50" height="16" fill="#999999"/>
+<path d="M64 806H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="857" font-size="24" fill="#111111" text-anchor="start" font-weight="700">FreeToken / patched user report</text>
+<text x="72" y="888" font-size="18" fill="#555555" text-anchor="start">RTX 4080 SUPER 16 GB / FreeToken 0.1.2</text>
+<text x="72" y="914" font-size="18" fill="#555555" text-anchor="start">QAT UD-Q4_K_XL / issue #188 / no paired control</text>
+<text x="975" y="872" font-size="36" fill="#111111" text-anchor="end" font-weight="700">179.00</text>
+<text x="975" y="899" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 866H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="858" width="445.51" height="16" fill="#999999"/>
+<path d="M64 926H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1020" font-size="22" fill="#111111" text-anchor="start" font-weight="700">THE TRADEOFF IS EXPLICIT</text>
+<path d="M64 1038H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1070" font-size="20" fill="#555555" text-anchor="start">Our mixed-precision Heretic target is larger than the QAT 4-bit reference. No claim of universal lead.</text>
+<text x="64" y="1104" font-size="20" fill="#555555" text-anchor="start">Colibri had no Gemma entry in the inspected roster. Vendor peak claims are not substituted for tests.</text>
+<path d="M64 1122H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1162" font-size="18" fill="#555555" text-anchor="start">PRIMARY SOURCES / docs/benchmarks/gemma4-mtp.md     LOCAL UPDATE / gemma4-cuda-mtp-ram.md</text>
+</g>
 </svg>

@@ -1,48 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="352" viewBox="0 0 960 352" role="img" aria-labelledby="title description">
-  <title id="title">LocalForgeLLM: your agent builds a local stack</title>
-  <desc id="description">Your task, hardware and memory budget guide a coding agent. You can specify a MoE model or let the agent select one. It reads documentation, chooses a compatible model, runtime and quantization, and tunes launch settings. It runs the workload, checks output, measures speed and memory, and refines the settings before saving a reusable profile. The same workflow applies to different MoE models and runtimes.</desc>
-  <defs>
-    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#414141"/></marker>
-  </defs>
-  <rect width="960" height="352" fill="#fafafa"/>
-  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
-    <text x="32" y="42" font-size="26" font-weight="700">A local stack tuned by your agent</text>
-    <text x="32" y="72" font-size="15" fill="#414141">Your model. Your hardware. A repeatable path to the right settings.</text>
-    <g fill="none" stroke="#c1c1c1">
-      <rect x="32" y="104" width="176" height="152"/>
-      <rect x="248" y="104" width="240" height="152"/>
-      <rect x="528" y="104" width="184" height="152"/>
-      <rect x="752" y="104" width="176" height="152"/>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="48" y="132">YOUR INPUT</text>
-      <text x="264" y="132">AGENT + DOCS</text>
-      <text x="544" y="132">RUN + MEASURE</text>
-      <text x="768" y="132">YOUR LOCAL STACK</text>
-    </g>
-    <g font-size="17" font-weight="600">
-      <text x="48" y="164">Task + limits</text>
-      <text x="264" y="164">Select + configure</text>
-      <text x="544" y="164">Your workload</text>
-      <text x="768" y="164">Launch profile</text>
-    </g>
-    <g font-size="14" fill="#414141">
-      <text x="48" y="192">CPU / GPU / RAM</text>
-      <text x="48" y="216">Optional model</text>
-      <text x="264" y="192">Model + runtime</text>
-      <text x="264" y="216">Quantization + settings</text>
-      <text x="544" y="192">Speed / RAM / VRAM</text>
-      <text x="544" y="216">Check the output</text>
-      <text x="768" y="192">Local endpoint</text>
-      <text x="768" y="216">Ready to reuse</text>
-    </g>
-    <g fill="none" stroke="#414141" stroke-width="1.5" marker-end="url(#arrow)">
-      <path d="M208 180H240"/>
-      <path d="M488 180H520"/>
-      <path d="M712 180H744"/>
-      <path d="M620 256V288H368V264"/>
-    </g>
-    <text x="414" y="312" font-size="14" fill="#414141">Adjust and repeat</text>
-    <text x="32" y="336" font-size="14" fill="#414141">Same workflow, different MoE models and runtimes.</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130" role="img" aria-labelledby="title description">
+<title id="title">One workflow / different bottlenecks</title>
+<desc id="description">Give the agent a task, a model and a real resource budget. Save the working profile and its evidence.. Dense + MoE / published weights + derived artifacts / local inference + optional hosted decisions</desc>
+<rect width="1600" height="1130" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">One workflow / different bottlenecks</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">Give the agent a task, a model and a real resource budget. Save the working profile and its evidence.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Dense + MoE / published weights + derived artifacts / local inference + optional hosted decisions</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="285" font-size="22" fill="#111111" text-anchor="start" font-weight="700">CHOOSE THE WORK</text>
+<path d="M64 303H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="350" font-size="22" fill="#111111" text-anchor="start" font-weight="700">01 / INSTALL</text>
+<text x="350" y="350" font-size="25" fill="#111111" text-anchor="start" font-weight="700">Model + packing + compatible kernels</text>
+<text x="350" y="391" font-size="19" fill="#555555" text-anchor="start">Bonsai PTQ1_0 or PQ2_0 needs the matching ternary runtime.</text>
+<path d="M64 426H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="482" font-size="22" fill="#111111" text-anchor="start" font-weight="700">02 / TUNE</text>
+<text x="350" y="482" font-size="25" fill="#111111" text-anchor="start" font-weight="700">Placement + context + KV + batching + MTP</text>
+<text x="350" y="523" font-size="19" fill="#555555" text-anchor="start">4060: GPU Q4 KV. 5070: GPU Q8 KV. Gemma: CPU experts + MTP.</text>
+<path d="M64 558H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="614" font-size="22" fill="#111111" text-anchor="start" font-weight="700">03 / BUILD</text>
+<text x="350" y="614" font-size="25" fill="#111111" text-anchor="start" font-weight="700">Full weights → REAP → calibration → APEX</text>
+<text x="350" y="655" font-size="19" fill="#555555" text-anchor="start">Pruning changes topology; quantization changes precision. Check quality after both.</text>
+<path d="M64 690H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="786" font-size="22" fill="#111111" text-anchor="start" font-weight="700">RUN → MEASURE → CHECK → SAVE → REPEAT</text>
+<path d="M64 804H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="839" font-size="20" fill="#555555" text-anchor="start">Record hardware, versions, prompt/decode time, RAM/VRAM definitions and failures. Keep a rollback.</text>
+<text x="64" y="910" font-size="22" fill="#111111" text-anchor="start" font-weight="700">OPTIONAL / JEV + BROWSER-USE + MCP</text>
+<text x="64" y="951" font-size="20" fill="#555555" text-anchor="start">Jev chooses typed actions; the local LLM writes text; the harness owns tools and permissions.</text>
+<text x="64" y="985" font-size="20" fill="#555555" text-anchor="start">Reuse selected Hermes MCP tools and skill text in llama UI. Verify outcomes, not just valid JSON.</text>
+<path d="M64 1052H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1092" font-size="18" fill="#555555" text-anchor="start">GUIDES / SKILL.md + docs/README.md     OPTIONAL API / docs/interfaces/jev.md</text>
+</g>
 </svg>

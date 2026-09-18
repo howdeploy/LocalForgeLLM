@@ -2,7 +2,7 @@
 
 [Documentation](../README.md) · [Level 3](../llm/build.md) · [Tested deployment examples](../README.md#launch-profiles)
 
-APEX creates mixed-precision recipes for GGUF tensors. It can assign different precision to expert, shared-expert, attention and layer groups, then call llama.cpp's quantizer. Our Qwen/Gemma runs use published APEX artifacts; the framework also supports other methods selected for the task.
+APEX creates mixed-precision recipes for GGUF tensors. It can assign different precision to expert, shared-expert, attention and layer groups, then call llama.cpp's quantizer. Our original Qwen/Gemma deployments use published APEX artifacts. The later [REAP124 build](reap.md) reconstructs the I-Balanced tensor allocation for pruned full weights with a new imatrix; it remains an experimental derived artifact.
 
 ## What can be changed on a desktop
 
@@ -83,3 +83,13 @@ Start from full/high-precision source weights, preserve them, and write to a new
 Read the actual output types, load the artifact in the target engine, then run [quality/capability and resource checks](../validation.md). Compare against a suitable uniform or existing mixed-precision baseline on the same workload. Save the source revision, tensor file, imatrix identity, binary version, command and results.
 
 For a new architecture, sensitivity/allocation tools such as `scripts/generate_sensitivity_configs.py` and `scripts/generate_opt_config.py` are optional starting points from upstream. Their measurements and tensor groups must be redone for the selected architecture; a profile's name is not a universal quality guarantee.
+
+## Recorded custom Q8 build: Ornith
+
+The September 12 rented-H100 build used the same pinned APEX wrapper and llama.cpp b10883. Its actual input was the published **BF16 GGUF**, [Ornith-1.5-35B-BF16.gguf at 12393612](https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF/tree/12393612fd4f730ff5aadc23e9b8f9648aa49ceb), 71,066,994,400 bytes. We did not perform a fresh safetensors-to-GGUF conversion in that build.
+
+The command used `--profile custom --config tensor-types.txt --base-type Q8_0 --layers 41`. All 753 tensors had explicit rules: **443 BF16 tensors became Q8_0; 310 F32 tensors stayed F32**, including preserved architecture/tokenizer/template data and 20 MTP tensors. No experts were removed, routing was unchanged and no imatrix was used. This Q8_0 implementation ignores importance weights; it is a different recipe from the calibrated REAP124 I-Balanced build.
+
+The output was **37,802,149,280 bytes / 35.206 GiB**, SHA-256 `de46c4baf4b4dd85ea438bb0f757f21c38841a353506579979bba114311658c3`. Integrity and the Pi tool cycle passed, but the 4060/32-GB deployment repeatedly read weights from SSD under its RAM cap and was too slow for the user's agent workload. A saved large-document request took 21.84 minutes. This is a useful negative result: a valid custom quant and a working API do not establish a practical deployment, and adding an unused imatrix would not solve that residency problem.
+
+Evidence is the saved `ornith-build-and-runtime-report.md`, build/resume recipes, integrity report, download hash verification and local timing records. The complete quantizer execution logs were not retained locally; the command is recipe-confirmed and the output separately verified. The [REAP guide](reap.md) describes the separate experiment that actually pruned experts.

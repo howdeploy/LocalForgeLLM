@@ -1,50 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title description">
-  <title id="title">Qwen3.6 35B-A3B: three local configurations</title>
-  <desc id="description">LocalForgeLLM: 21.11 tokens per second across 28 requests, 13.43 GiB peak process RSS, Ryzen 5 5600 and RTX 4060 8 GB, APEX I-Compact. Colibri: authors report 9.9 tokens per second warm, 40 GB peak RSS, Threadripper 3945WX and RTX 3070 8 GB, int4. FreeToken: authors report 39.3 tokens per second, Core i9-13900H and RTX 4060 Laptop 8 GB, NVFP4, with 32 GiB installed RAM. These configurations use different CPUs, weight formats, workloads and memory definitions.</desc>
-  <rect width="960" height="440" fill="#fafafa"/>
-  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
-    <text x="32" y="42" font-size="26" font-weight="700">Example: Qwen3.6 35B-A3B</text>
-    <text x="32" y="72" font-size="15" fill="#414141">Decode and memory across three configurations · September 2026</text>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="112">SYSTEM</text>
-      <text x="456" y="112">DECODE</text>
-      <text x="648" y="112">HOST MEMORY</text>
-    </g>
-    <g fill="none" stroke="#c1c1c1">
-      <path d="M32 128H928M32 208H928M32 288H928M32 368H928"/>
-      <path d="M432 96V368M624 96V368"/>
-    </g>
-    <g font-size="19" font-weight="600">
-      <text x="32" y="162">LocalForgeLLM</text>
-      <text x="32" y="242">Colibri</text>
-      <text x="32" y="322">FreeToken</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="188">RTX 4060 8 GB · Ryzen 5 5600</text>
-      <text x="32" y="268">RTX 3070 8 GB · Threadripper 3945WX</text>
-      <text x="32" y="348">RTX 4060 Laptop 8 GB · i9-13900H</text>
-    </g>
-    <g font-size="28" font-weight="700">
-      <text x="456" y="164">21.11</text>
-      <text x="456" y="244">9.9</text>
-      <text x="456" y="324">39.3</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="456" y="188">tok/s · 28 requests</text>
-      <text x="456" y="268">tok/s · warm</text>
-      <text x="456" y="348">tok/s · reported</text>
-    </g>
-    <g font-size="22" font-weight="600">
-      <text x="648" y="164">13.43 GiB</text>
-      <text x="648" y="244">40 GB</text>
-      <text x="648" y="324">32 GiB</text>
-    </g>
-    <g font-size="14" fill="#414141">
-      <text x="648" y="188">Peak process RSS</text>
-      <text x="648" y="268">Reported peak RSS</text>
-      <text x="648" y="348">Installed RAM, not RSS</text>
-      <text x="32" y="398">Formats: APEX I-Compact / int4 / NVFP4. Different CPUs and workloads.</text>
-      <text x="32" y="422">LocalForgeLLM: our logs. Colibri and FreeToken: author-reported results.</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title description">
+<title id="title">Qwen3.6 / three deployment reports</title>
+<desc id="description">35B-A3B. Hardware, quantization and workloads differ; memory columns have different meanings.. Local measurement: September 10, 2026 / 32K configured / 28 requests</desc>
+<rect width="1600" height="1000" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Qwen3.6 / three deployment reports</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">35B-A3B. Hardware, quantization and workloads differ; memory columns have different meanings.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Local measurement: September 10, 2026 / 32K configured / 28 requests</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="282" font-size="22" fill="#111111" text-anchor="start" font-weight="700">DECODE / INDEPENDENT REPORTS</text>
+<path d="M64 300H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="331" font-size="19" fill="#555555" text-anchor="start">Bars share a zero origin. These are deployment observations, not a controlled framework ranking.</text>
+<rect x="56" y="346" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="378" font-size="24" fill="#111111" text-anchor="start" font-weight="700">LocalForgeLLM / APEX I-Compact</text>
+<text x="72" y="409" font-size="18" fill="#555555" text-anchor="start">RTX 4060 8 GB / Ryzen 5 5600 / Vulkan</text>
+<text x="72" y="435" font-size="18" fill="#555555" text-anchor="start">13.43 GiB peak process RSS / 4.07 GiB model VRAM</text>
+<text x="975" y="393" font-size="36" fill="#111111" text-anchor="end" font-weight="700">21.11</text>
+<text x="975" y="420" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 387H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="379" width="236.43" height="16" fill="#111111"/>
+<path d="M64 447H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="498" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Colibri / int4 / warm</text>
+<text x="72" y="529" font-size="18" fill="#555555" text-anchor="start">RTX 3070 8 GB / Threadripper 3945WX / CUDA</text>
+<text x="72" y="555" font-size="18" fill="#555555" text-anchor="start">40 GB reported peak RSS / 200-token decode</text>
+<text x="975" y="513" font-size="36" fill="#111111" text-anchor="end" font-weight="700">9.90</text>
+<text x="975" y="540" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 507H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="499" width="110.88" height="16" fill="#999999"/>
+<path d="M64 567H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="618" font-size="24" fill="#111111" text-anchor="start" font-weight="700">FreeToken / NVFP4</text>
+<text x="72" y="649" font-size="18" fill="#555555" text-anchor="start">RTX 4060 Laptop 8 GB / i9-13900H / coding workload</text>
+<text x="72" y="675" font-size="18" fill="#555555" text-anchor="start">32 GiB installed RAM; process RSS not supplied</text>
+<text x="975" y="633" font-size="36" fill="#111111" text-anchor="end" font-weight="700">39.30</text>
+<text x="975" y="660" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 627H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="619" width="440.16" height="16" fill="#999999"/>
+<path d="M64 687H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="786" font-size="22" fill="#111111" text-anchor="start" font-weight="700">READ THE COMPARISON WITH ITS RESOURCE BUDGET</text>
+<path d="M64 804H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="836" font-size="20" fill="#555555" text-anchor="start">Local rate: 2.13x Colibri warm; 46.3% below FreeToken. All three configurations remain visible.</text>
+<text x="64" y="870" font-size="20" fill="#555555" text-anchor="start">CPU/GPU placement enables the local fit. Different artifacts and workloads prevent a causal claim.</text>
+<path d="M64 922H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="962" font-size="18" fill="#555555" text-anchor="start">LOCAL SETTINGS + PRIMARY COMPARISON SOURCES / docs/README.md#comparison-with-colibri-and-freetoken</text>
+</g>
 </svg>

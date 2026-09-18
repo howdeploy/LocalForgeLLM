@@ -1,73 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="784" viewBox="0 0 960 784" role="img" aria-labelledby="title description">
-  <title id="title">Gemma 4 MTP: measured session change</title>
-  <desc id="description">Our RTX 4060 8 GB, Ryzen 5 5600 deployment with APEX I-Balanced and a Q8 MTP assistant measured 14.83 tokens per second across two requests and 15.03 over a 102.05-second decode. The preceding no-MTP request measured 9.81. The observed difference is 51.1 percent, but different prompts mean it is not a controlled MTP gain. A separate QAT CUDA experiment on RTX 2070 Max-Q reports 23.1 to 24.0 at temperature 1, within noise, and 22.9 to 27.1 at greedy sampling. Main placement stayed fixed locally; quality and full 32K input remain unvalidated.</desc>
-  <rect width="960" height="784" fill="#fafafa"/>
-  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#111111">
-    <text x="32" y="42" font-size="26" font-weight="700">Gemma 4 / MTP session change</text>
-    <text x="32" y="72" font-size="15" fill="#414141">RTX 4060 8 GB / Ryzen 5 5600 / APEX I-Balanced / September 11, 2026</text>
-    <g fill="none" stroke="#c1c1c1">
-      <path d="M32 100H928M32 218H928M320 100V218M624 100V218"/>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="128">MTP / WEIGHTED DECODE</text>
-      <text x="344" y="128">LONG RESPONSE / DECODE</text>
-      <text x="648" y="128">OBSERVED DIFFERENCE</text>
-    </g>
-    <g font-size="34" font-weight="700">
-      <text x="32" y="174">14.83 tok/s</text>
-      <text x="344" y="174">15.03 tok/s</text>
-      <text x="648" y="174">+51.1%</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="200">2 requests / 1835 output tokens</text>
-      <text x="344" y="200">1535 output tokens / 102.05 s</text>
-      <text x="648" y="200">Different requests; not an A/B</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="252">REQUEST / MODE</text>
-      <text x="400" y="252">OUTPUT TOKENS</text>
-      <text x="608" y="252">DECODE TIME</text>
-      <text x="808" y="252">TOK/S</text>
-    </g>
-    <g fill="none" stroke="#c1c1c1">
-      <path d="M32 268H928M32 322H928M32 376H928M32 430H928"/>
-    </g>
-    <g font-size="17">
-      <text x="32" y="302">B1 / no MTP</text>
-      <text x="32" y="356">M1 / MTP depth 2</text>
-      <text x="32" y="410">M2 / MTP depth 2</text>
-      <text x="400" y="302">171</text>
-      <text x="400" y="356">300</text>
-      <text x="400" y="410">1535</text>
-      <text x="608" y="302">17.32 s</text>
-      <text x="608" y="356">21.58 s</text>
-      <text x="608" y="410">102.05 s</text>
-    </g>
-    <g font-size="22" font-weight="600">
-      <text x="808" y="302">9.81</text>
-      <text x="808" y="356">13.86</text>
-      <text x="808" y="410">15.03</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="456">Rate = sum(output tokens - 1) / sum(decode seconds). Prompt time excluded.</text>
-      <text x="32" y="478">M2 total: 149.34 s. Accepted drafts: 975 / 1718 (56.75%) across M1 + M2.</text>
-      <text x="32" y="500">32K configured; max observed live context 2265. Formal quality checks pending.</text>
-    </g>
-    <text x="32" y="542" font-size="18" font-weight="600">Published MTP controls / a different 8 GB rig</text>
-    <text x="32" y="566" font-size="13" fill="#414141">RTX 2070 Max-Q / QAT 4-bit / CUDA / 32K / depth 2 / repeated coding test</text>
-    <g fill="none" stroke="#c1c1c1">
-      <path d="M32 584H928M32 662H928M480 584V662"/>
-    </g>
-    <g font-size="19" font-weight="600">
-      <text x="32" y="614">Temp 1: 23.1 → 24.0 / +3.9%</text>
-      <text x="504" y="614">Greedy: 22.9 → 27.1 / +18.3%</text>
-    </g>
-    <g font-size="13" fill="#414141">
-      <text x="32" y="642">Within the author's reported noise</text>
-      <text x="504" y="642">Repeated paired baseline/candidate runs</text>
-      <text x="32" y="690">Same placement: all main GPU layers / first 27 layers' experts on CPU.</text>
-      <text x="32" y="712">Extra head allocations: 425.34 MiB GPU weights + 211.10 MiB GPU compute.</text>
-      <text x="32" y="752">Timings, source links and limits: docs/benchmarks/gemma4-mtp.md</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1260" viewBox="0 0 1600 1260" role="img" aria-labelledby="title description">
+<title id="title">Gemma 4 / MTP in context</title>
+<desc id="description">A compatible assistant proposes tokens; the target verifies them. Measure the complete request.. Local: RTX 4060 8 GB / Ryzen 5 5600 / Heretic APEX I-Balanced / Q8 MTP assistant</desc>
+<rect width="1600" height="1260" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Gemma 4 / MTP in context</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">A compatible assistant proposes tokens; the target verifies them. Measure the complete request.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Local: RTX 4060 8 GB / Ryzen 5 5600 / Heretic APEX I-Balanced / Q8 MTP assistant</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<path d="M64.0 258H530.6666666666667" stroke="#111111" fill="none"/>
+<text x="64.0" y="291" font-size="19" fill="#555555" text-anchor="start">EARLY VULKAN / MTP2</text>
+<text x="64.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">14.83</text>
+<text x="64.0" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / 2 responses</text>
+<text x="64.0" y="420" font-size="19" fill="#555555" text-anchor="start">+51.1% observed gap</text>
+<path d="M554.6666666666667 258H1021.3333333333335" stroke="#111111" fill="none"/>
+<text x="554.6666666666667" y="291" font-size="19" fill="#555555" text-anchor="start">LATER CUDA / MTP2</text>
+<text x="554.6666666666667" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">18.80</text>
+<text x="554.6666666666667" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / 4 responses</text>
+<text x="554.6666666666667" y="420" font-size="19" fill="#555555" text-anchor="start">20 GiB service cap</text>
+<path d="M1045.3333333333335 258H1512.0000000000002" stroke="#111111" fill="none"/>
+<text x="1045.3333333333335" y="291" font-size="19" fill="#555555" text-anchor="start">LATER CUDA / MTP OFF</text>
+<text x="1045.3333333333335" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">17.36</text>
+<text x="1045.3333333333335" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / 4 responses</text>
+<text x="1045.3333333333335" y="420" font-size="19" fill="#555555" text-anchor="start">Same cap / other prompts</text>
+<text x="64" y="487" font-size="22" fill="#111111" text-anchor="start" font-weight="700">ORIGINAL VULKAN TIMING / SEPTEMBER 11</text>
+<path d="M64 505H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="536" font-size="19" fill="#555555" text-anchor="start">Same main placement; different requests. The observed gap is not a causal MTP gain.</text>
+<text x="72" y="578" font-size="24" fill="#111111" text-anchor="start" font-weight="700">MTP off</text>
+<text x="72" y="609" font-size="18" fill="#555555" text-anchor="start">171 output tokens / 17.32 s decode</text>
+<text x="975" y="593" font-size="36" fill="#111111" text-anchor="end" font-weight="700">9.81</text>
+<text x="975" y="620" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 587H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="579" width="219.81" height="16" fill="#999999"/>
+<path d="M64 647H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="686" font-size="24" fill="#111111" text-anchor="start" font-weight="700">MTP depth 2</text>
+<text x="72" y="717" font-size="18" fill="#555555" text-anchor="start">300 output tokens / 21.58 s decode</text>
+<text x="975" y="701" font-size="36" fill="#111111" text-anchor="end" font-weight="700">13.86</text>
+<text x="975" y="728" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 695H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="687" width="310.37" height="16" fill="#999999"/>
+<path d="M64 755H1536" stroke="#cccccc" fill="none"/>
+<rect x="56" y="762" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="794" font-size="24" fill="#111111" text-anchor="start" font-weight="700">MTP depth 2</text>
+<text x="72" y="825" font-size="18" fill="#555555" text-anchor="start">1535 output tokens / 102.05 s decode</text>
+<text x="975" y="809" font-size="36" fill="#111111" text-anchor="end" font-weight="700">15.03</text>
+<text x="975" y="836" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 803H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="795" width="336.72" height="16" fill="#111111"/>
+<path d="M64 863H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="940" font-size="22" fill="#111111" text-anchor="start" font-weight="700">COMMUNITY PAIRED CONTROLS / DIFFERENT MODEL AND MACHINE</text>
+<path d="M64 958H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="990" font-size="20" fill="#555555" text-anchor="start">RTX 2070 Max-Q 8 GB / i7-8750H / QAT 4-bit + QAT head / CUDA / repeated coding workload.</text>
+<text x="64" y="1038" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Temperature 1: 23.1 → 24.0 tok/s (+3.9%; within reported noise)</text>
+<text x="64" y="1080" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Greedy:        22.9 → 27.1 tok/s (+18.3%; paired trials)</text>
+<text x="64" y="1124" font-size="20" fill="#555555" text-anchor="start">Our Q8 label belongs to the 0.46 GB head, not the 19.51 GB target. Vision with MTP was not tested.</text>
+<path d="M64 1182H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1222" font-size="18" fill="#555555" text-anchor="start">TIMINGS + COMMUNITY SOURCES / docs/benchmarks/gemma4-mtp.md     LATER PHASES / gemma4-cuda-mtp-ram.csv</text>
+</g>
 </svg>

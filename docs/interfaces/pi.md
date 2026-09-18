@@ -4,6 +4,8 @@
 
 Pi owns the coding-agent loop, tools, history, compaction and terminal interaction. Inference can run independently through llama.cpp, FreeToken or another compatible server.
 
+For the recorded host-side browser tool and automatic research controller, see [Jev API with a local LLM](jev.md). That guide separates Pi lifecycle extensions from tool-only MCP reuse in llama UI and keeps provider keys outside the local model context.
+
 ## Install and configure
 
 The upstream repository is now [earendil-works/pi](https://github.com/earendil-works/pi); the older `badlogic/pi-mono` URL redirects there. The package is `@earendil-works/pi-coding-agent`. Inspect the selected version's Node requirements and preserve an existing installation's packages/extensions.

@@ -4,9 +4,9 @@
   <strong>English</strong> · <a href="README.ru.md">Русский</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.es.md">Español</a>
 </p>
 
-**Bigger models on the hardware you have.** LocalForgeLLM is a framework that lets your coding agent build and tune a local AI stack. Give it a task and, optionally, a MoE model; the agent matches the model, runtime, quantization and launch settings to your hardware. Use the result for local chat, vision and coding agents.
+**Bigger models on the hardware you have.** LocalForgeLLM is a framework that lets your coding agent build and tune a local AI stack. Give it a task and, optionally, a dense or MoE model; the agent matches the model, runtime, quantization and launch settings to your hardware. Use the result for local chat, vision and coding agents.
 
-**Stack:** AI coding agents · model and runtime documentation · Python / Bash · inference engines such as [llama.cpp](https://github.com/ggml-org/llama.cpp) · CPU / GPU backends · local HTTP API.
+**Stack:** AI coding agents · llama.cpp / PrismML kernels · CPU / GPU placement · APEX mixed precision · REAP expert pruning · native MTP · optional MCP / Jev API tools.
 
 ## Install
 
@@ -20,9 +20,23 @@ For a concrete starting point, use our [Qwen and Gemma launch examples](docs/REA
 
 ## How it works
 
-The agent inspects your hardware and model documentation, selects a suitable model, engine and weight format, then tunes CPU/GPU placement, context, cache and batching. It runs your workload, measures speed and memory use, adjusts the settings and saves the best working profile. The same workflow applies to different MoE families and quantization methods.
+The agent inspects your hardware and model documentation, selects a suitable model, engine and weight format, then tunes CPU/GPU placement, context, cache and batching. It runs your workload, measures speed and memory use, adjusts the settings and saves the best working profile. For derived weights, it composes conversion, pruning, calibration and quantization with separate quality checks.
 
 ![Your task and hardware guide an agent through runtime selection, model tuning, measurement and refinement, ending in a reusable local launch profile.](docs/assets/how-it-works.svg)
+
+## Bonsai 2: 27B on 8 GB, 59.65 tok/s on 12 GB
+
+**September 18 update:** our **RTX 4060 8 GB / Ryzen 5 5600 / 32 GB RAM** runs Ternary Bonsai 2 27B **PTQ1_0** with 32K context, GPU Q4 KV and CPU vision. The final short-response check reached **27.14 tok/s**, versus 6.73 with CPU cache. A **31,018-token input** lookup decoded at **20.22 tok/s**. The model process used **6.24 GiB VRAM** in the recorded snapshot; desktop headroom remained tight.
+
+A later [llama UI session with MCP](docs/benchmarks/bonsai.md#interactive-llama-ui-session-32k-on-rtx-4060) averaged **19.58 tok/s** across nine completed generations and **7,355 output tokens**, with one cancelled stream excluded. Its prompts included 10.8K–18.0K tokens of conversation and tool context; this is separate from the short-response check.
+
+Community contributor **ap3x0s** tested an **RTX 5070 12 GB / i7-10700K / 32 GB RAM**: Bonsai **PQ2_0 + GPU Q8 KV + PrismML kernels** reached **59.65 tok/s** over 10K output tokens, **5.60×** the same report's Opus-Distill-v2 row. That run spent its output budget thinking before producing code; this is throughput evidence, not a coding-quality win.
+
+![Bonsai: community RTX 5070 throughput and a separate RTX 4060 GPU-cache tuning result, with hardware and measurement limits.](docs/assets/bonsai.svg)
+
+PTQ1_0 is **5.95 GB**, PQ2_0 is **7.21 GB**, and the optional Q8 vision module adds **0.63 GB**. Native ternary kernels and cache residency explain the tuning direction; the cross-model gap changes several factors together. The RTX 5070 result is not a prediction for an 8 GB card.
+
+[Measurements and report credit](docs/benchmarks/bonsai.md) · [Numeric data](docs/benchmarks/bonsai.csv) · [Download, calibration and 32K launch recipe](docs/implementations/bonsai.md)
 
 ## Examples on an RTX 4060
 
@@ -45,7 +59,7 @@ Our Qwen rate is **2.13×** [Colibri's reported warm rate](https://github.com/Ju
 
 ![Gemma 4 deployment comparison: our APEX plus MTP stack, QAT CUDA and Vulkan on another 8 GB GPU, full Q8 on GB10, and a FreeToken report on a 16 GB GPU. Each row names its weights, hardware and evidence scope.](docs/assets/gemma4-comparison.svg)
 
-![Gemma MTP timing summary: 14.83 tok/s weighted, 15.03 on the long response, and an observed 51.1 percent difference from a preceding no-MTP request. Different requests prevent attributing this difference solely to MTP.](docs/assets/gemma4-mtp.svg)
+![Gemma MTP observations: the initial Vulkan sessions, later CUDA comparison and separately attributed community controls.](docs/assets/gemma4-mtp.svg)
 
 The preceding no-MTP request measured **9.81 tok/s**. The **+51.1% observed difference is not a controlled MTP gain**: prompts and output lengths differed. Maximum observed live context was 2265 tokens; formal quality and full-window tests remain pending. The separate head added 425.34 MiB of logged GPU weights and 211.10 MiB of GPU compute allocations; these are not whole-process peak measurements.
 
@@ -61,6 +75,24 @@ The initial CUDA compilation took **10 min 30.161 s** with four workers and 2.1 
 
 [Phase table, methodology and timing data](docs/benchmarks/gemma4-cuda-mtp-ram.md) · [Agent workflow: build, switch and compare CUDA/Vulkan](docs/implementations/engines.md#cuda-and-vulkan)
 
+## REAP, APEX and individual expert placement
+
+On a rented **RTX 4500 Ada 24 GB / Threadripper PRO 5995WX**, we rebuilt Gemma 4 Heretic through **REAP → BF16 GGUF → fresh imatrix → APEX I-Balanced**. Retaining 124 of 128 experts per layer reduced the GGUF from **19.51 to 18.96 GB (−2.81%)**. Top-k stayed at eight; pruning did not produce a measured decode speedup, and the quality-loss target was not established.
+
+A separate experiment kept the same rebuilt weights and cached **475 hot experts** with a **2,200 MiB VRAM budget**. Bypassing that cache during prefill achieved **32.93 tok/s**, **+8.07%** versus whole-block placement in the same fork, with **3.91% lower full-request time** and **2.43 GiB more RSS**. These are server measurements, not desktop performance claims.
+
+![REAP reduced storage; a separate hot-expert placement experiment improved decode and full-request time, with a host-memory tradeoff.](docs/assets/reap.svg)
+
+[Tools, pinned sources, build commands and evaluation limits](docs/implementations/reap.md) · [Numeric data](docs/benchmarks/reap.csv)
+
+## Jev, browser-use and MCP
+
+Keep text generation local and use optional **Jev / TypeSafe API** calls for typed decisions: routing, choosing observed browser actions and checking results. Our integration combines Jev with a local field-text helper and the harness's existing tool loop. Native llama UI MCP can reuse selected Hermes tools and skill text; it does not inherit the complete Hermes harness.
+
+[Jev API example and browser-use architecture](docs/interfaces/jev.md) · [Pinned browser-use and Cua source review](docs/interfaces/jev.md#upstream-implementations-browser-use-and-cua) · [Reuse Hermes tools and skills in llama UI](docs/interfaces/llama-ui.md#reuse-hermes-tools-and-skills)
+
 ## Documentation
 
 [Agent skill](SKILL.md) · [Framework manual](docs/README.md#agent-manual) · [English documentation](docs/README.md) · [Launch profiles](docs/README.md#launch-profiles) · [Measurement methodology](docs/README.md#resource-use-and-methodology) · [Comparison details](docs/README.md#comparison-with-colibri-and-freetoken)
+
+All report graphics use the project's monochrome style and English labels. [Artwork sources and regeneration](docs/assets/README.md) keep numbers tied to the benchmark data. Different machines, artifacts and workloads are named explicitly; these reports do not establish a universal speed or quality lead over other frameworks.

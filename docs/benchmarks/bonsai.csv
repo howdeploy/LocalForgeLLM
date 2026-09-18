@@ -1,0 +1,10 @@
+id,source,gpu,model,packing,kv,context,output_tokens,decode_tps,reported_vram_gb,reported_ram_delta_gb,model_disk_gb,prompt_tokens,prompt_ms,decode_ms,wall_seconds
+subscriber_apex,ap3x0s,RTX 5070 12 GB,Qwen3.8-27B APEX,nano IQ2,CPU,32768,10000,8.58,11.6,11.2,10.47,,,,
+subscriber_opus,ap3x0s,RTX 5070 12 GB,Qwen3.8-27B Opus-Distill-v2,IQ3_XXS,CPU,32768,10000,10.65,11.6,13.4,10.64,,,,
+subscriber_bonsai_q8,ap3x0s,RTX 5070 12 GB,Ternary Bonsai 2 27B,PQ2_0,GPU q8_0,32768,10000,59.65,9.74,9.74,7.21,,,,
+subscriber_bonsai_f16,ap3x0s,RTX 5070 12 GB,Ternary Bonsai 2 27B,PQ2_0,GPU f16,32768,10000,54.69,10.59,10.59,7.21,,,,
+subscriber_bonsai_before,ap3x0s,RTX 5070 12 GB,Ternary Bonsai 2 27B,PQ2_0,GPU q8_0,32768,10000,53.60,,,7.21,,,,
+subscriber_opus_eos,ap3x0s,RTX 5070 12 GB,Qwen3.8-27B Opus-Distill-v2,IQ3_XXS,CPU,32768,6689,11.56,11.7,,10.64,,,,
+local_cpu,LocalForgeLLM,RTX 4060 8 GB,Ternary Bonsai 2 27B,PTQ1_0,CPU q4_0,32768,253,6.72774929074305,,,5.946648928,44,746.889,37456.806,38.20740559400292
+local_gpu,LocalForgeLLM,RTX 4060 8 GB,Ternary Bonsai 2 27B,PTQ1_0,GPU q4_0,32768,248,27.14382059934655,,,5.946648928,44,484.348,9099.677,9.587664827999106
+local_long,LocalForgeLLM,RTX 4060 8 GB,Ternary Bonsai 2 27B,PTQ1_0,GPU q4_0,32768,56,20.217384671767082,,,5.946648928,31018,166895.225,2720.431,169.68223418699927

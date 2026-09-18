@@ -7,6 +7,8 @@ Choose the engine and checkpoint together. This catalog gives concrete starting 
 | Implementation | Candidate use | Verify before selecting |
 |:--|:--|:--|
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) | GGUF on CPU/GPU backends, explicit placement, local API and bundled chat UI | Architecture, quantization/backend kernels, template and modality support in the exact build |
+| [PrismML llama.cpp](https://github.com/PrismML-Eng/llama.cpp) | Ternary Bonsai GGUF with native packed kernels and matching activation transforms | [PTQ1_0 vs PQ2_0, cache calibration and actual memory fit](bonsai.md); stock format support must not be assumed |
+| [Static expert-cache fork](https://github.com/adrianhoehne/llama.cpp/tree/018789cb57128ab67bc0bdbda59ae99f4df3f046) | Experimental per-expert GPU residency over CPU-backed MoE weights | [Corrected profiling, prefill bypass, runtime fallback and extra RAM cost](reap.md#separate-experiment-hot-experts-on-gpu-cold-experts-in-ram) |
 | [FreeToken](https://github.com/FlashML-org/FreeToken) | Supported MoE checkpoints with expert offload/cache and CPU/GPU execution strategies | Model/quantization matrix, CUDA/driver requirements, host RAM and the supported checkpoint conversion path |
 | [Colibri](https://github.com/JustVugg/colibri) | Its supported model families and converted containers, with family-specific CPU/GPU/storage behavior | Exact family engine, converter, memory semantics and server/tool support |
 | [MLX-LM](https://github.com/ml-explore/mlx-lm) | An alternative to investigate for supported models on Apple Silicon | Architecture, MLX checkpoint/quantization, unified memory and required serving features |

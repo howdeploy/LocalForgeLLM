@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2310" viewBox="0 0 1600 2310" role="img" aria-labelledby="title description">
+<title id="title">Bonsai 2 / CUDA and GPU cache</title>
+<desc id="description">Two machines, two packings. Decode throughput and the settings behind it.. Community: RTX 5070 12 GB / i7-10700K     Local: RTX 4060 8 GB / Ryzen 5 5600</desc>
+<rect width="1600" height="2310" fill="#fafafa"/>
+<g font-family="DejaVu Sans Mono, monospace" fill="#111111">
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Bonsai 2 / CUDA and GPU cache</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">Two machines, two packings. Decode throughput and the settings behind it.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">Community: RTX 5070 12 GB / i7-10700K     Local: RTX 4060 8 GB / Ryzen 5 5600</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<path d="M64.0 258H408.0" stroke="#111111" fill="none"/>
+<text x="64.0" y="291" font-size="19" fill="#555555" text-anchor="start">COMMUNITY / 10K OUTPUT</text>
+<text x="64.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">59.65</text>
+<text x="64.0" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / RTX 5070</text>
+<text x="64.0" y="420" font-size="19" fill="#555555" text-anchor="start">PQ2_0 + GPU Q8 KV</text>
+<path d="M432.0 258H776.0" stroke="#111111" fill="none"/>
+<text x="432.0" y="291" font-size="19" fill="#555555" text-anchor="start">VS OPUS / SAME REPORT</text>
+<text x="432.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">5.60x</text>
+<text x="432.0" y="391" font-size="19" fill="#555555" text-anchor="start">10K output comparison</text>
+<text x="432.0" y="420" font-size="19" fill="#555555" text-anchor="start">Different model + runtime</text>
+<path d="M800.0 258H1144.0" stroke="#111111" fill="none"/>
+<text x="800.0" y="291" font-size="19" fill="#555555" text-anchor="start">LOCAL / SHORT RESPONSE</text>
+<text x="800.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">27.14</text>
+<text x="800.0" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / RTX 4060</text>
+<text x="800.0" y="420" font-size="19" fill="#555555" text-anchor="start">PTQ1_0 + GPU Q4 KV</text>
+<path d="M1168.0 258H1512.0" stroke="#111111" fill="none"/>
+<text x="1168.0" y="291" font-size="19" fill="#555555" text-anchor="start">LOCAL / PROFILE CHANGE</text>
+<text x="1168.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">4.03x</text>
+<text x="1168.0" y="391" font-size="19" fill="#555555" text-anchor="start">GPU vs CPU cache</text>
+<text x="1168.0" y="420" font-size="19" fill="#555555" text-anchor="start">Microbatch also changed</text>
+<text x="64" y="487" font-size="22" fill="#111111" text-anchor="start" font-weight="700">01 / COMMUNITY REPORT — AP3X0S</text>
+<path d="M64 505H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="536" font-size="19" fill="#555555" text-anchor="start">32 GB DDR4 / 32K context / 1 slot / xhigh / 10,000 output tokens per row</text>
+<text x="72" y="578" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Qwen3.8-27B / APEX nano IQ2</text>
+<text x="72" y="609" font-size="18" fill="#555555" text-anchor="start">Stock b10908 / CPU KV + Flash + MTP2</text>
+<text x="72" y="635" font-size="18" fill="#555555" text-anchor="start">File 10.47 GB / VRAM 11.60 GB / RAM delta 11.20 GB</text>
+<text x="975" y="593" font-size="36" fill="#111111" text-anchor="end" font-weight="700">8.58</text>
+<text x="975" y="620" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 587H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="579" width="64.06" height="16" fill="#999999"/>
+<path d="M64 647H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="686" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Qwen3.8-27B / Opus-Distill-v2</text>
+<text x="72" y="717" font-size="18" fill="#555555" text-anchor="start">IQ3_XXS / Stock b10908 / CPU KV + Flash + MTP2</text>
+<text x="72" y="743" font-size="18" fill="#555555" text-anchor="start">File 10.64 GB / VRAM 11.60 GB / RAM delta 13.40 GB</text>
+<text x="975" y="701" font-size="36" fill="#111111" text-anchor="end" font-weight="700">10.65</text>
+<text x="975" y="728" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 695H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="687" width="79.52" height="16" fill="#999999"/>
+<path d="M64 755H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="794" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Ternary Bonsai 2 27B / PQ2_0</text>
+<text x="72" y="825" font-size="18" fill="#555555" text-anchor="start">PrismML b10685 / GPU F16 KV + Flash / no MTP</text>
+<text x="72" y="851" font-size="18" fill="#555555" text-anchor="start">File 7.21 GB / VRAM 10.59 GB / RAM delta 10.59 GB</text>
+<text x="975" y="809" font-size="36" fill="#111111" text-anchor="end" font-weight="700">54.69</text>
+<text x="975" y="836" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 803H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="795" width="408.35" height="16" fill="#999999"/>
+<path d="M64 863H1536" stroke="#cccccc" fill="none"/>
+<rect x="56" y="870" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="902" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Ternary Bonsai 2 27B / PQ2_0</text>
+<text x="72" y="933" font-size="18" fill="#555555" text-anchor="start">PrismML b10685 / GPU Q8 KV + Flash / no MTP</text>
+<text x="72" y="959" font-size="18" fill="#555555" text-anchor="start">File 7.21 GB / VRAM 9.74 GB / RAM delta 9.74 GB</text>
+<text x="975" y="917" font-size="36" fill="#111111" text-anchor="end" font-weight="700">59.65</text>
+<text x="975" y="944" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 911H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="903" width="445.39" height="16" fill="#111111"/>
+<path d="M64 971H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1034" font-size="20" fill="#555555" text-anchor="start">Q8 vs F16 KV: +9.1% decode, 0.85 reported GB less VRAM.</text>
+<text x="64" y="1070" font-size="20" fill="#555555" text-anchor="start">Also reported: 53.60 tok/s before freeing VRAM; Opus natural EOS: 11.56 tok/s / 6,689 tokens.</text>
+<text x="64" y="1106" font-size="20" fill="#555555" text-anchor="start">Bonsai hit 10K inside thinking before writing code. Throughput does not establish task success.</text>
+<text x="64" y="1186" font-size="22" fill="#111111" text-anchor="start" font-weight="700">02 / LOCALFORGELLM — RTX 4060</text>
+<path d="M64 1204H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1235" font-size="19" fill="#555555" text-anchor="start">32 GB RAM / 32K context / PrismML b10683 / PTQ1_0 / same 44-token prompt / thinking off</text>
+<text x="72" y="1275" font-size="24" fill="#111111" text-anchor="start" font-weight="700">CPU Q4 KV + recurrent state</text>
+<text x="72" y="1306" font-size="18" fill="#555555" text-anchor="start">6 threads / batch 512 / microbatch 64 / 253 output tokens</text>
+<text x="975" y="1290" font-size="36" fill="#111111" text-anchor="end" font-weight="700">6.73</text>
+<text x="975" y="1317" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1284H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1276" width="100.47" height="16" fill="#999999"/>
+<path d="M64 1344H1536" stroke="#cccccc" fill="none"/>
+<rect x="56" y="1351" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="1383" font-size="24" fill="#111111" text-anchor="start" font-weight="700">GPU Q4 KV + recurrent state</text>
+<text x="72" y="1414" font-size="18" fill="#555555" text-anchor="start">6 threads / batch 512 / microbatch 32 / 248 output tokens</text>
+<text x="975" y="1398" font-size="36" fill="#111111" text-anchor="end" font-weight="700">27.14</text>
+<text x="975" y="1425" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1392H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1384" width="405.35" height="16" fill="#111111"/>
+<path d="M64 1452H1536" stroke="#cccccc" fill="none"/>
+<path d="M64.0 1520H530.6666666666667" stroke="#111111" fill="none"/>
+<text x="64.0" y="1553" font-size="19" fill="#555555" text-anchor="start">LONG INPUT / 31,018 TOKENS</text>
+<text x="64.0" y="1616" font-size="48" fill="#111111" text-anchor="start" font-weight="700">20.22</text>
+<text x="64.0" y="1653" font-size="19" fill="#555555" text-anchor="start">tok/s / 56 output tokens</text>
+<text x="64.0" y="1682" font-size="19" fill="#555555" text-anchor="start">169.68 s full request</text>
+<path d="M554.6666666666667 1520H1021.3333333333335" stroke="#111111" fill="none"/>
+<text x="554.6666666666667" y="1553" font-size="19" fill="#555555" text-anchor="start">PROCESS VRAM / SNAPSHOT</text>
+<text x="554.6666666666667" y="1616" font-size="48" fill="#111111" text-anchor="start" font-weight="700">6.24 GiB</text>
+<text x="554.6666666666667" y="1653" font-size="19" fill="#555555" text-anchor="start">Q4 KV 576 MiB</text>
+<text x="554.6666666666667" y="1682" font-size="19" fill="#555555" text-anchor="start">Recurrent state 149.62 MiB</text>
+<path d="M1045.3333333333335 1520H1512.0000000000002" stroke="#111111" fill="none"/>
+<text x="1045.3333333333335" y="1553" font-size="19" fill="#555555" text-anchor="start">PACKING / LANGUAGE FILE</text>
+<text x="1045.3333333333335" y="1616" font-size="48" fill="#111111" text-anchor="start" font-weight="700">5.95 GB</text>
+<text x="1045.3333333333335" y="1653" font-size="19" fill="#555555" text-anchor="start">PTQ1_0 / local 4060</text>
+<text x="1045.3333333333335" y="1682" font-size="19" fill="#555555" text-anchor="start">PQ2_0 / 5070: 7.21 GB</text>
+<text x="64" y="1760" font-size="22" fill="#111111" text-anchor="start" font-weight="700">03 / LATER LLAMA UI SESSION — RTX 4060</text>
+<path d="M64 1778H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1809" font-size="19" fill="#555555" text-anchor="start">Same 32K GPU-cache profile / MCP enabled / observational conversation</text>
+<rect x="56" y="1826" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="1858" font-size="24" fill="#111111" text-anchor="start" font-weight="700">Nine completed generations</text>
+<text x="72" y="1889" font-size="18" fill="#555555" text-anchor="start">10,786 to 17,989 input tokens, including cached prefixes</text>
+<text x="72" y="1915" font-size="18" fill="#555555" text-anchor="start">7,355 output tokens / one cancelled stream excluded / reasoning-token split unavailable</text>
+<text x="975" y="1873" font-size="36" fill="#111111" text-anchor="end" font-weight="700">19.58</text>
+<text x="975" y="1900" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1867H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1859" width="292.36" height="16" fill="#111111"/>
+<path d="M64 1927H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1975" font-size="20" fill="#555555" text-anchor="start">Separate smoke checks: reasoning 26.79 tok/s; two MCP skill calls completed in a 76.93 s loop.</text>
+<text x="64" y="2060" font-size="22" fill="#111111" text-anchor="start" font-weight="700">WHAT THE RESULT SUPPORTS</text>
+<path d="M64 2078H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="2110" font-size="20" fill="#555555" text-anchor="start">Ternary kernels reduce weight traffic; GPU cache residency avoids the host path in these profiles.</text>
+<text x="64" y="2144" font-size="20" fill="#555555" text-anchor="start">Cross-model gains mix several changes. Local headroom reached 98 MiB; no universal 8 GB fit promise.</text>
+<text x="64" y="2178" font-size="20" fill="#555555" text-anchor="start">Source: subscriber HTML plus local API timings. No controlled quality ranking or instant-peak claim.</text>
+<path d="M64 2232H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="2272" font-size="18" fill="#555555" text-anchor="start">DATA / docs/benchmarks/bonsai.csv     METHODS + CREDIT / docs/benchmarks/bonsai.md</text>
+</g>
+</svg>

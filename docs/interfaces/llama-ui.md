@@ -20,6 +20,24 @@ Tool execution otherwise uses the server's environment. Select an appropriate co
 
 In the UI, the tool registry and agentic loop select enabled tools, handle model tool calls and feed results into continuation. Check a real tool cycle, not just the presence of a tools panel. For browser-direct MCP, CORS/transport differs from server-managed MCP; do not enable the server's CORS proxy as a universal networking fix.
 
+## Reuse Hermes tools and skills
+
+The September 18 Bonsai installation verified native server MCP with the PrismML fork at `d8f26eec76da6d09bb708bcba51ef64b8cd868a3`. It used `--mcp-servers-config` and `--ui-config-file` on the existing loopback server. The server-side tool bridge reused selected Hermes MCP configurations and a skill reader; llama UI kept its own agent loop and permission gates.
+
+For a new installation:
+
+1. Confirm these flags and the MCP transport/schema in the installed binary. Preserve the inference profile, then add only the required MCP servers to a private candidate config.
+2. Reuse existing server commands, dependency environments and configured tool filters. Resolve credential references host-side; keep secret-bearing JSON out of Git and readable only by its owner.
+3. Expose `skills_list` for metadata and `skill_view` for the selected body/references. Reading a skill must not execute shell preprocessing. Validate paths and map the skill's original tool prefixes to the actual exposed MCP names.
+4. Add the existing [Jev browser-use host tool](jev.md#our-browser-use-adapter-jev-selects-the-local-model-writes) through MCP, selecting the fixed `bonsai` text-helper profile when appropriate. This reuses an installed adapter; these docs do not install a generic Hermes-to-MCP bridge.
+5. Verify tool listing, a real tool call, result replay and cancellation at the API boundary. Keep the UI's normal action confirmations. Test the UI separately when authorized.
+
+The recorded configuration exposed 47 tools: eight local bridge tools, 14 Brave tools, 23 Canvas tools and two coding-agent tools. A live API cycle selected and read a Hermes skill through the model, and local field-text generation returned valid text. Those checks used no paid TypeSafe call and did not operate a browser. A separate browser task is required to establish live Jev success.
+
+Skill text supplies instructions, not missing tool dependencies, Hermes memory/session state or Pi's automatic research-controller hooks. The native MCP path inspected here relays text results; MCP images/resources are not automatically UI attachments. Startup defaults in `--ui-config-file` also do not overwrite an existing browser's saved settings: apply the intended system prompt in its existing settings deliberately.
+
+The 47-tool check began with about **11K prompt tokens**. On a 32K model, select relevant tools and load skill bodies on demand. Save a profile without MCP for rollback; disabling tools need not replace the model or its tuned cache settings.
+
 ## Code and data flow
 
 Paths refer to [llama.cpp 41fc7584](https://github.com/ggml-org/llama.cpp/tree/41fc7584f0c1d72d9cc1ac46ccae8defc1587f0f). The [upstream UI architecture](https://github.com/ggml-org/llama.cpp/blob/41fc7584f0c1d72d9cc1ac46ccae8defc1587f0f/tools/ui/README.md) and `tools/ui/docs/` contain further diagrams.

@@ -4,6 +4,8 @@
   <a href="README.md">English</a> · <a href="README.ru.md">Русский</a> · <strong>简体中文</strong> · <a href="README.es.md">Español</a>
 </p>
 
+**September 18 update (English):** [Bonsai benchmarks](benchmarks/bonsai.md) · [REAP / APEX rebuild](implementations/reap.md) · [Jev API + browser-use](interfaces/jev.md) · [Updated graphics](assets/README.md).
+
 [返回项目](../README.zh-CN.md) · [安装](#安装) · [启动配置](#启动配置) · [实测数据](#rtx-4060-实测)
 
 ## 智能体操作指南

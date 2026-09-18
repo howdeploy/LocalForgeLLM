@@ -4,6 +4,8 @@
   <a href="README.md">English</a> · <strong>Русский</strong> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.es.md">Español</a>
 </p>
 
+**September 18 update (English):** [Bonsai benchmarks](docs/benchmarks/bonsai.md) · [REAP / APEX rebuild](docs/implementations/reap.md) · [Jev API + browser-use](docs/interfaces/jev.md) · [Updated graphics](docs/assets/README.md).
+
 **Большие модели на железе, которое у вас уже есть.** LocalForgeLLM — фреймворк, с которым ваш кодинг-агент собирает и оптимизирует локальный AI-стек. Укажите задачу и, при желании, MoE-модель; агент подбирает модель, движок, квантование и параметры запуска под ваше оборудование. Готовый стек можно использовать для локального чата, зрения и кодинг-агентов.
 
 **Стек:** AI-агенты · документация моделей и движков · Python / Bash · движки инференса, например [llama.cpp](https://github.com/ggml-org/llama.cpp) · бэкенды CPU / GPU · локальный HTTP API.

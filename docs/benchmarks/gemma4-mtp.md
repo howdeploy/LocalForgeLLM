@@ -17,6 +17,8 @@ these components.
 
 ## Comparison scope
 
+**September 18 artwork refresh:** the comparison figure uses the later **18.80 tok/s CUDA phase mean**, documented in [CUDA/MTP/RAM](gemma4-cuda-mtp-ram.md). The table and original timings below preserve the preceding Vulkan result at 14.83. The MTP figure also shows the later CUDA observations separately.
+
 ![Gemma 4 deployment results, with quantization, hardware and evidence scope shown for each row.](../assets/gemma4-comparison.svg)
 
 These are same-family deployment references, not a ranking on identical hardware.
@@ -40,9 +42,9 @@ result. [Colibri measurement](https://github.com/JustVugg/colibri/blob/fd93c41aa
 
 The matched-capacity CUDA result exceeds our observed rate despite an older GPU.
 Different target weights, backend, memory policy and workload prevent attributing
-that gap to one component. It is a reason to consider a future local CUDA trial
-under the same workload; it is not evidence that changing a flag will reproduce
-24 tok/s here. None of the external stacks was installed for this comparison.
+that gap to one component. The later local CUDA trial is now recorded in the
+[adaptation report](gemma4-cuda-mtp-ram.md); it does not reproduce 24 tok/s here.
+None of the external stacks was installed for this comparison.
 
 ## Weight size and functionality
 

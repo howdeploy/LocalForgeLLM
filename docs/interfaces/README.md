@@ -10,6 +10,7 @@ The model endpoint, agent harness and visible shell are separate components. Con
 | OpenShell | Agent execution environment, lifecycle and provider/access policy | [OpenShell + Pi](openshell.md) |
 | llama UI | llama-server's bundled web interface and its native tool/agent loop | [llama UI](llama-ui.md) |
 | Hermes | Agent harness with CLI, web/desktop, IDE and messaging entry points | [Hermes](hermes.md) |
+| Jev / TypeSafe API | Optional hosted typed decisions; browser actions combined with a local text model | [Jev API and browser-use](jev.md) |
 
 ## Connection contract
 

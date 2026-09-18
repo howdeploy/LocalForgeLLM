@@ -19,6 +19,9 @@ Start with [AGENTS.md](../AGENTS.md) and the shared [LocalForgeLLM skill](../SKI
 | Select, build, switch or compare CUDA and Vulkan | [Backend workflow and measured adaptation](implementations/engines.md#cuda-and-vulkan) |
 | Download a matching head; enable, disable or diagnose speculative decoding | [MTP operations, memory and quality](implementations/mtp.md) |
 | Convert/calibrate/quantize full weights | [Level 3 — build](llm/build.md) |
+| Prune and rebuild full weights; place individual experts | [REAP → APEX and expert caching](implementations/reap.md) |
+| Fit or accelerate Ternary Bonsai 2 on 8–12 GB GPUs | [Packing, calibration and GPU cache](implementations/bonsai.md) · [Measurements](benchmarks/bonsai.md) |
+| Add typed decisions and browser-use to a local agent | [Jev API](interfaces/jev.md) · [Hermes MCP/skills in llama UI](interfaces/llama-ui.md#reuse-hermes-tools-and-skills) |
 | Choose an engine or an optional weight-processing method | [Engines](implementations/engines.md) · [APEX](implementations/apex.md) |
 | Connect or customize an agent/shell | [Interface contracts](interfaces/README.md) · [Pi](interfaces/pi.md) · [OpenShell](interfaces/openshell.md) · [llama UI](interfaces/llama-ui.md) · [Hermes](interfaces/hermes.md) |
 | Update, repair or roll back a working stack | [Operations](operations.md) |
@@ -30,14 +33,27 @@ The technical guides are maintained in English. The four language entry pages pr
 
 ## How it works
 
-1. Give your coding agent the task, target context and memory budget. Specify a MoE model or let it choose one. It inspects the CPU, GPU, RAM, storage and installed software.
+1. Give your coding agent the task, target context and memory budget. Specify a dense or MoE model or let it choose one. It inspects the CPU, GPU, RAM, storage and installed software.
 2. Using the framework, model and runtime documentation, it selects a compatible engine and weight format.
 3. It tunes CPU/GPU placement, threads, context, cache precision and batch sizes for your workload.
 4. It runs the task, checks the output, measures speed and RAM/VRAM use, and refines the settings. The result is a reusable launch profile with its runtime version and parameters.
 
 ![An agent selects and tunes a local stack from your task and hardware, measures the result and saves a launch profile.](assets/how-it-works.svg)
 
-The installation and commands below are **two examples for one PC**, using Qwen and Gemma with APEX GGUF. The framework applies the same selection and tuning workflow to other MoE models and quantization methods.
+The installation and commands below are **two historical examples for one PC**, using Qwen and Gemma with APEX GGUF. The framework applies the same selection and tuning workflow to dense and MoE models and other quantization methods.
+
+## September 18 update
+
+| Evidence | Best recorded result / outcome | Procedure and data |
+|:--|:--|:--|
+| Bonsai PTQ1_0, RTX 4060 8 GB / Ryzen 5 5600 | 27.14 tok/s short response; 20.22 with 31,018 input tokens; 6.24 GiB process VRAM snapshot | [Case study](benchmarks/bonsai.md) · [32K profile](implementations/bonsai.md) |
+| Bonsai PTQ1_0, later llama UI/MCP session on the same 4060 | 19.58 tok/s weighted; 7,355 output tokens / 9 completed requests; 1 cancelled request excluded | [Session scope and CSV](benchmarks/bonsai.md#interactive-llama-ui-session-32k-on-rtx-4060) |
+| Bonsai PQ2_0, community RTX 5070 12 GB / i7-10700K | 59.65 tok/s over 10K thinking tokens; 5.60× the report's forced-10K Opus row | [ap3x0s report and CSV](benchmarks/bonsai.md#community-report-rtx-5070) |
+| Gemma APEX, RTX 4060 8 GB / Ryzen 5 5600 | 18.80 weighted phase mean; 19.38 best completed-response average | [CUDA, RAM and MTP](benchmarks/gemma4-cuda-mtp-ram.md) |
+| Gemma REAP124 rebuild, RTX 4500 Ada 24 GB / 5995WX | GGUF −2.81%; no pruning decode gain; expert-cache experiment +8.07% decode | [Tools, commands and quality limits](implementations/reap.md) |
+| Jev with a local model and browser-use | Typed API routing and host tool integration; pinned browser-use/Cua review; no local Jev latency benchmark | [API and harness contract](interfaces/jev.md) |
+
+These rows use different workloads. See each report for timing definitions and failures; no universal framework or model-quality ranking is implied. [English graphics and regeneration](assets/README.md).
 
 ## Install
 

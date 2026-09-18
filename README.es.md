@@ -4,6 +4,8 @@
   <a href="README.md">English</a> · <a href="README.ru.md">Русский</a> · <a href="README.zh-CN.md">简体中文</a> · <strong>Español</strong>
 </p>
 
+**September 18 update (English):** [Bonsai benchmarks](docs/benchmarks/bonsai.md) · [REAP / APEX rebuild](docs/implementations/reap.md) · [Jev API + browser-use](docs/interfaces/jev.md) · [Updated graphics](docs/assets/README.md).
+
 **Modelos más grandes en el hardware que ya tienes.** LocalForgeLLM es un framework con el que tu agente de programación construye y optimiza un entorno local de IA. Indica una tarea y, si quieres, un modelo MoE; el agente adapta el modelo, motor, cuantización y parámetros de inicio a tu hardware. El resultado sirve para chat local, visión y agentes de programación.
 
 **Tecnologías:** agentes de programación con IA · documentación de modelos y motores · Python / Bash · motores de inferencia como [llama.cpp](https://github.com/ggml-org/llama.cpp) · backends de CPU / GPU · API HTTP local.

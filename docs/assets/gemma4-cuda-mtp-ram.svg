@@ -1,205 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2020" viewBox="0 0 1600 2020" role="img" aria-labelledby="title description">
-<title id="title">Gemma 4: CUDA, MTP and RAM tuning results</title>
-<desc id="description">Nineteen completed local responses on RTX 4060 8 GB and Ryzen 5 5600. Eight chronological phases compare Vulkan, CUDA, MTP and 11/20 GiB RAM caps. Best phase mean: 18.80 tokens per second. Observed MTP gap: 8.3 percent. Observed late RAM-cap gap: 7.4 percent. Initial CUDA compilation: 10 minutes 30.161 seconds. These are session observations with different prompts and context depths, not isolated causal effects.</desc>
-<rect width="1600" height="2020" fill="#fafafa"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1680" viewBox="0 0 1600 1680" role="img" aria-labelledby="title description">
+<title id="title">Gemma 4 / CUDA, MTP and RAM</title>
+<desc id="description">Heretic APEX I-Balanced: 19.51 GB target + 0.46 GB Q8 MTP head. Weights unchanged.. RTX 4060 8 GB / Ryzen 5 5600 / 32 GB RAM / llama.cpp b10883 / September 11, 2026</desc>
+<rect width="1600" height="1680" fill="#fafafa"/>
 <g font-family="DejaVu Sans Mono, monospace" fill="#111111">
-<text x="56" y="43" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">LOCALFORGELLM / MEASURED DEPLOYMENT</text>
-<text x="1544" y="43" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="end">11 SEP 2026</text>
-<text x="56" y="108" font-size="49" font-weight="700" fill="#111111" text-anchor="start">Gemma 4 / CUDA, MTP &amp; RAM</text>
-<text x="56" y="149" font-size="20" font-weight="400" fill="#4b4b4b" text-anchor="start">Heretic APEX I-Balanced  |  19.51 GB target  |  Q8 MTP assistant: 0.46 GB</text>
-<text x="56" y="184" font-size="20" font-weight="400" fill="#4b4b4b" text-anchor="start">RTX 4060 8 GB  /  Ryzen 5 5600  /  32 GB RAM  /  llama.cpp b10883</text>
-<line x1="56" y1="213" x2="1544" y2="213" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="248" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">OBSERVED SESSION COMPARISONS</text>
-<text x="56" y="283" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">BEST PHASE MEAN</text>
-<text x="56" y="335" font-size="44" font-weight="700" fill="#111111" text-anchor="start">18.80 tok/s</text>
-<text x="56" y="365" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">4 replies / CUDA + MTP / 20 GiB</text>
-<text x="56" y="389" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">vs Vulkan MTP: +26.8% gap</text>
-<line x1="418" y1="270" x2="418" y2="389" stroke="#c9c9c9" stroke-width="1"/>
-<text x="438" y="283" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">MTP / ON vs OFF</text>
-<text x="438" y="335" font-size="44" font-weight="700" fill="#111111" text-anchor="start">+8.3%</text>
-<text x="438" y="365" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">17.36 → 18.80 tok/s</text>
-<text x="438" y="389" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">20 GiB / different chat replies</text>
-<line x1="800" y1="270" x2="800" y2="389" stroke="#c9c9c9" stroke-width="1"/>
-<text x="820" y="283" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">RAM / LATE SESSIONS</text>
-<text x="820" y="335" font-size="44" font-weight="700" fill="#111111" text-anchor="start">+7.4%</text>
-<text x="820" y="365" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">17.51 → 18.80 tok/s</text>
-<text x="820" y="389" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">11 vs 20 GiB / MTP enabled</text>
-<line x1="1182" y1="270" x2="1182" y2="389" stroke="#c9c9c9" stroke-width="1"/>
-<text x="1202" y="283" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">INITIAL CUDA COMPILE</text>
-<text x="1202" y="335" font-size="44" font-weight="700" fill="#111111" text-anchor="start">10m 30s</text>
-<text x="1202" y="365" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">4 build workers / 499 steps</text>
-<text x="1202" y="389" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">Setup and download time extra</text>
-<line x1="56" y1="414" x2="1544" y2="414" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="460" font-size="27" font-weight="700" fill="#111111" text-anchor="start">THE TUNING SEQUENCE</text>
-<text x="56" y="491" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Weighted decode means. Whiskers show the observed min–max across replies, not confidence intervals.</text>
-<text x="56" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">STEP / CONFIGURATION</text>
-<text x="535" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">BACKEND</text>
-<text x="705" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="middle">MTP</text>
-<text x="867" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="middle">RAM CAP</text>
-<text x="1000" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="middle">N</text>
-<text x="1130" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="end">MEAN</text>
-<text x="1192" y="537" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">DECODE / TOK/S</text>
-<text x="1192.0" y="566" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="middle">0</text>
-<text x="1362.0" y="566" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="middle">10</text>
-<text x="1532.0" y="566" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="end">20</text>
-<line x1="56" y1="581" x2="1544" y2="581" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="615" font-size="22" font-weight="700" fill="#111111" text-anchor="start">01 / Vulkan baseline</text>
-<text x="56" y="642" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">MTP off / first reference</text>
-<text x="535" y="627" font-size="22" font-weight="400" fill="#111111" text-anchor="start">Vulkan</text>
-<text x="705" y="627" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">OFF</text>
-<text x="867" y="627" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">11 GiB</text>
-<text x="1000" y="627" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">1</text>
-<text x="1130" y="627" font-size="28" font-weight="700" fill="#111111" text-anchor="end">9.81</text>
-<line x1="1192.0" y1="591" x2="1192.0" y2="653" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="591" x2="1362.0" y2="653" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="591" x2="1532.0" y2="653" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="615" width="166.81895871490525" height="14" fill="#aaa"/>
-<line x1="1358.8189587149052" y1="622" x2="1358.8189587149052" y2="622" stroke="#111111" stroke-width="3"/>
-<circle cx="1358.8189587149052" cy="622" r="4.5" fill="#111111"/>
-<line x1="56" y1="663" x2="1544" y2="663" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="697" font-size="22" font-weight="700" fill="#111111" text-anchor="start">02 / Enable MTP</text>
-<text x="56" y="724" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Original Vulkan deployment</text>
-<text x="535" y="709" font-size="22" font-weight="400" fill="#111111" text-anchor="start">Vulkan</text>
-<text x="705" y="709" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="709" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">11 GiB</text>
-<text x="1000" y="709" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="1130" y="709" font-size="28" font-weight="700" fill="#111111" text-anchor="end">14.83</text>
-<line x1="1192.0" y1="673" x2="1192.0" y2="735" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="673" x2="1362.0" y2="735" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="673" x2="1532.0" y2="735" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="697" width="252.05830222341288" height="14" fill="#aaa"/>
-<line x1="1427.5522107522656" y1="704" x2="1447.5487133977767" y2="704" stroke="#111111" stroke-width="3"/>
-<line x1="1427.5522107522656" y1="697" x2="1427.5522107522656" y2="711" stroke="#111111" stroke-width="2"/>
-<line x1="1447.5487133977767" y1="697" x2="1447.5487133977767" y2="711" stroke="#111111" stroke-width="2"/>
-<circle cx="1444.058302223413" cy="704" r="4.5" fill="#111111"/>
-<line x1="56" y1="745" x2="1544" y2="745" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="779" font-size="22" font-weight="700" fill="#111111" text-anchor="start">03 / Switch to CUDA</text>
-<text x="56" y="806" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Initial run / same RAM cap</text>
-<text x="535" y="791" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="791" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="791" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">11 GiB</text>
-<text x="1000" y="791" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">3</text>
-<text x="1130" y="791" font-size="28" font-weight="700" fill="#111111" text-anchor="end">14.01</text>
-<line x1="1192.0" y1="755" x2="1192.0" y2="817" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="755" x2="1362.0" y2="817" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="755" x2="1532.0" y2="817" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="779" width="238.1477192415318" height="14" fill="#aaa"/>
-<line x1="1428.7936961675023" y1="786" x2="1432.3611638570333" y2="786" stroke="#111111" stroke-width="3"/>
-<line x1="1428.7936961675023" y1="779" x2="1428.7936961675023" y2="793" stroke="#111111" stroke-width="2"/>
-<line x1="1432.3611638570333" y1="779" x2="1432.3611638570333" y2="793" stroke="#111111" stroke-width="2"/>
-<circle cx="1430.1477192415318" cy="786" r="4.5" fill="#111111"/>
-<line x1="56" y1="827" x2="1544" y2="827" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="861" font-size="22" font-weight="700" fill="#111111" text-anchor="start">04 / Raise the RAM cap</text>
-<text x="56" y="888" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Same CUDA process / live change</text>
-<text x="535" y="873" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="873" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="873" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">20 GiB</text>
-<text x="1000" y="873" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">1</text>
-<text x="1130" y="873" font-size="28" font-weight="700" fill="#111111" text-anchor="end">17.64</text>
-<line x1="1192.0" y1="837" x2="1192.0" y2="899" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="837" x2="1362.0" y2="899" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="837" x2="1532.0" y2="899" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="861" width="299.91920914936077" height="14" fill="#aaa"/>
-<line x1="1491.9192091493608" y1="868" x2="1491.9192091493608" y2="868" stroke="#111111" stroke-width="3"/>
-<circle cx="1491.9192091493608" cy="868" r="4.5" fill="#111111"/>
-<line x1="56" y1="909" x2="1544" y2="909" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="943" font-size="22" font-weight="700" fill="#111111" text-anchor="start">05 / Direct-load trial</text>
-<text x="56" y="970" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Reverted: little system RAM left</text>
-<text x="535" y="955" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="955" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="955" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">20 GiB</text>
-<text x="1000" y="955" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">1</text>
-<text x="1130" y="955" font-size="28" font-weight="700" fill="#111111" text-anchor="end">17.84</text>
-<line x1="1192.0" y1="919" x2="1192.0" y2="981" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="919" x2="1362.0" y2="981" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="919" x2="1532.0" y2="981" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="943" width="303.2750662395714" height="14" fill="#aaa"/>
-<line x1="1495.2750662395715" y1="950" x2="1495.2750662395715" y2="950" stroke="#111111" stroke-width="3"/>
-<circle cx="1495.2750662395715" cy="950" r="4.5" fill="#111111"/>
-<line x1="56" y1="991" x2="1544" y2="991" stroke="#c9c9c9" stroke-width="1"/>
-<rect x="56" y="991" width="1488" height="82" fill="#eaeaea"/>
-<text x="56" y="1025" font-size="22" font-weight="700" fill="#111111" text-anchor="start">06 / CUDA + MTP / 20 GiB</text>
-<text x="56" y="1052" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">mmap restored / best phase mean</text>
-<text x="535" y="1037" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="1037" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="1037" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">20 GiB</text>
-<text x="1000" y="1037" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">4</text>
-<text x="1130" y="1037" font-size="28" font-weight="700" fill="#111111" text-anchor="end">18.80</text>
-<line x1="1192.0" y1="1001" x2="1192.0" y2="1063" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="1001" x2="1362.0" y2="1063" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="1001" x2="1532.0" y2="1063" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="1025" width="319.5506001253834" height="14" fill="#777"/>
-<line x1="1500.3571795215307" y1="1032" x2="1521.4784394000317" y2="1032" stroke="#111111" stroke-width="3"/>
-<line x1="1500.3571795215307" y1="1025" x2="1500.3571795215307" y2="1039" stroke="#111111" stroke-width="2"/>
-<line x1="1521.4784394000317" y1="1025" x2="1521.4784394000317" y2="1039" stroke="#111111" stroke-width="2"/>
-<circle cx="1511.5506001253834" cy="1032" r="4.5" fill="#111111"/>
-<line x1="56" y1="1073" x2="1544" y2="1073" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1107" font-size="22" font-weight="700" fill="#111111" text-anchor="start">07 / Disable MTP</text>
-<text x="56" y="1134" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Same CUDA / 20 GiB settings</text>
-<text x="535" y="1119" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="1119" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">OFF</text>
-<text x="867" y="1119" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">20 GiB</text>
-<text x="1000" y="1119" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">4</text>
-<text x="1130" y="1119" font-size="28" font-weight="700" fill="#111111" text-anchor="end">17.36</text>
-<line x1="1192.0" y1="1083" x2="1192.0" y2="1145" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="1083" x2="1362.0" y2="1145" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="1083" x2="1532.0" y2="1145" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="1107" width="295.1489467013096" height="14" fill="#aaa"/>
-<line x1="1484.350857707836" y1="1114" x2="1488.5401534397072" y2="1114" stroke="#111111" stroke-width="3"/>
-<line x1="1484.350857707836" y1="1107" x2="1484.350857707836" y2="1121" stroke="#111111" stroke-width="2"/>
-<line x1="1488.5401534397072" y1="1107" x2="1488.5401534397072" y2="1121" stroke="#111111" stroke-width="2"/>
-<circle cx="1487.1489467013096" cy="1114" r="4.5" fill="#111111"/>
-<line x1="56" y1="1155" x2="1544" y2="1155" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1189" font-size="22" font-weight="700" fill="#111111" text-anchor="start">08 / MTP on / lower RAM cap</text>
-<text x="56" y="1216" font-size="17" font-weight="400" fill="#4b4b4b" text-anchor="start">Return to 11 GiB / later session</text>
-<text x="535" y="1201" font-size="22" font-weight="400" fill="#111111" text-anchor="start">CUDA</text>
-<text x="705" y="1201" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">2</text>
-<text x="867" y="1201" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">11 GiB</text>
-<text x="1000" y="1201" font-size="22" font-weight="400" fill="#111111" text-anchor="middle">3</text>
-<text x="1130" y="1201" font-size="28" font-weight="700" fill="#111111" text-anchor="end">17.51</text>
-<line x1="1192.0" y1="1165" x2="1192.0" y2="1227" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1362.0" y1="1165" x2="1362.0" y2="1227" stroke="#d7d7d7" stroke-width="1"/>
-<line x1="1532.0" y1="1165" x2="1532.0" y2="1227" stroke="#d7d7d7" stroke-width="1"/>
-<rect x="1192" y="1189" width="297.60168057419617" height="14" fill="#aaa"/>
-<line x1="1478.5649146378646" y1="1196" x2="1502.6962857000283" y2="1196" stroke="#111111" stroke-width="3"/>
-<line x1="1478.5649146378646" y1="1189" x2="1478.5649146378646" y2="1203" stroke="#111111" stroke-width="2"/>
-<line x1="1502.6962857000283" y1="1189" x2="1502.6962857000283" y2="1203" stroke="#111111" stroke-width="2"/>
-<circle cx="1489.601680574196" cy="1196" r="4.5" fill="#111111"/>
-<line x1="56" y1="1237" x2="1544" y2="1237" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1268" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">MTP = max draft tokens. RAM cap = service memory limit, including charged file-cache pages.</text>
-<text x="56" y="1297" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">All stages use mmap except step 05. 32K allocated; actual history length varies between requests.</text>
-<line x1="56" y1="1322" x2="1544" y2="1322" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1360" font-size="24" font-weight="700" fill="#111111" text-anchor="start">WHAT THE NUMBERS SUPPORT</text>
-<text x="56" y="1396" font-size="20" font-weight="400" fill="#111111" text-anchor="start">RAM raised in one CUDA process: 14.01 → 17.64 tok/s (+25.9% observed; step 03 → 04).</text>
-<text x="56" y="1429" font-size="20" font-weight="400" fill="#111111" text-anchor="start">Later checks: MTP / 20 GiB averaged 18.80; MTP / 11 GiB averaged 17.51 tok/s.</text>
-<text x="56" y="1462" font-size="20" font-weight="400" fill="#111111" text-anchor="start">CUDA alone is not isolated: the first backend switch was 14.83 → 14.01 tok/s (-5.5%).</text>
-<text x="56" y="1495" font-size="20" font-weight="400" fill="#111111" text-anchor="start">The same 11 GiB CUDA setting later reached 17.51. Cache, prompts and context also matter.</text>
-<line x1="56" y1="1522" x2="1544" y2="1522" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1561" font-size="23" font-weight="700" fill="#111111" text-anchor="start">CUDA ADAPTATION / ONE-TIME WORK</text>
-<text x="820" y="1561" font-size="23" font-weight="700" fill="#111111" text-anchor="start">RESOURCE PLACEMENT / HELD FIXED</text>
-<line x1="791" y1="1545" x2="791" y2="1780" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1611" font-size="34" font-weight="700" fill="#111111" text-anchor="start">10m 30.161s</text>
-<text x="56" y="1645" font-size="19" font-weight="400" fill="#111111" text-anchor="start">Initial compile / 499 steps / 4 workers</text>
-<text x="56" y="1677" font-size="19" font-weight="400" fill="#111111" text-anchor="start">2.1 GiB peak build RAM / 3.265s final relink</text>
-<text x="56" y="1709" font-size="19" font-weight="400" fill="#111111" text-anchor="start">CUDA 13.3 / Release / sm_89 / b10883</text>
-<text x="56" y="1741" font-size="19" font-weight="400" fill="#111111" text-anchor="start">Runtime rebuilt; GGUF weights unchanged.</text>
-<text x="56" y="1773" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Downloads, extraction and checks took extra time.</text>
-<text x="820" y="1605" font-size="19" font-weight="700" fill="#111111" text-anchor="start">CPU</text>
-<text x="909" y="1605" font-size="18" font-weight="400" fill="#111111" text-anchor="start">Expert weights in 27/30 blocks; 6 threads</text>
-<text x="820" y="1640" font-size="19" font-weight="700" fill="#111111" text-anchor="start">GPU</text>
-<text x="909" y="1640" font-size="18" font-weight="400" fill="#111111" text-anchor="start">Attention + 3 expert blocks + Q8 KV</text>
-<text x="909" y="1665" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">MTP assistant added when enabled</text>
-<text x="820" y="1700" font-size="19" font-weight="700" fill="#111111" text-anchor="start">RAM</text>
-<text x="909" y="1700" font-size="18" font-weight="400" fill="#111111" text-anchor="start">11 → 20 → 11 GiB service cap</text>
-<text x="820" y="1738" font-size="18" font-weight="400" fill="#111111" text-anchor="start">32K / 1 slot / Q8 KV / batch 1152 / vision on</text>
-<text x="820" y="1773" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Q8 describes the MTP head, not the APEX target.</text>
-<line x1="56" y1="1800" x2="1544" y2="1800" stroke="#c9c9c9" stroke-width="1"/>
-<text x="56" y="1838" font-size="23" font-weight="700" fill="#111111" text-anchor="start">HOW TO READ THIS FIGURE</text>
-<text x="56" y="1873" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">19 completed local replies. Rate = sum(output tokens − 1) / sum(decode seconds). Prompt time excluded.</text>
-<text x="56" y="1903" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Different prompts, cache state and live context. No randomized A/B or full-32K stress test.</text>
-<text x="56" y="1933" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Observed percentages are not guaranteed or additive, and do not measure answer quality.</text>
-<text x="56" y="1963" font-size="18" font-weight="400" fill="#4b4b4b" text-anchor="start">Best single-response average: 19.38 tok/s / 1,019 output tokens / 52.53s decode. Not an instant peak.</text>
-<text x="56" y="1995" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="start">LOCALFORGELLM / LOCAL SESSION OBSERVATIONS</text>
-<text x="1544" y="1995" font-size="16" font-weight="400" fill="#4b4b4b" text-anchor="end">gemma4-cuda-mtp-ram.csv</text>
+<text x="64" y="52" font-size="19" fill="#555555" text-anchor="start">LOCALFORGELLM / BENCHMARK REPORT</text>
+<text x="1536" y="52" font-size="19" fill="#555555" text-anchor="end">18 SEP 2026</text>
+<text x="64" y="116" font-size="46" fill="#111111" text-anchor="start" font-weight="700">Gemma 4 / CUDA, MTP and RAM</text>
+<text x="64" y="163" font-size="21" fill="#555555" text-anchor="start">Heretic APEX I-Balanced: 19.51 GB target + 0.46 GB Q8 MTP head. Weights unchanged.</text>
+<text x="64" y="197" font-size="21" fill="#555555" text-anchor="start">RTX 4060 8 GB / Ryzen 5 5600 / 32 GB RAM / llama.cpp b10883 / September 11, 2026</text>
+<path d="M64 224H1536" stroke="#cccccc" fill="none"/>
+<path d="M64.0 258H408.0" stroke="#111111" fill="none"/>
+<text x="64.0" y="291" font-size="19" fill="#555555" text-anchor="start">BEST PHASE / 4 RESPONSES</text>
+<text x="64.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">18.80</text>
+<text x="64.0" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / CUDA + MTP2</text>
+<text x="64.0" y="420" font-size="19" fill="#555555" text-anchor="start">20 GiB service cap</text>
+<path d="M432.0 258H776.0" stroke="#111111" fill="none"/>
+<text x="432.0" y="291" font-size="19" fill="#555555" text-anchor="start">BEST COMPLETED RESPONSE</text>
+<text x="432.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">19.38</text>
+<text x="432.0" y="391" font-size="19" fill="#555555" text-anchor="start">tok/s / 1,019 output</text>
+<text x="432.0" y="420" font-size="19" fill="#555555" text-anchor="start">52.53 s decode interval</text>
+<path d="M800.0 258H1144.0" stroke="#111111" fill="none"/>
+<text x="800.0" y="291" font-size="19" fill="#555555" text-anchor="start">MTP / LATER CUDA PHASES</text>
+<text x="800.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">+8.3%</text>
+<text x="800.0" y="391" font-size="19" fill="#555555" text-anchor="start">Different chat requests</text>
+<text x="800.0" y="420" font-size="19" fill="#555555" text-anchor="start">Observed, not isolated</text>
+<path d="M1168.0 258H1512.0" stroke="#111111" fill="none"/>
+<text x="1168.0" y="291" font-size="19" fill="#555555" text-anchor="start">INITIAL CUDA COMPILE</text>
+<text x="1168.0" y="354" font-size="48" fill="#111111" text-anchor="start" font-weight="700">10m 30s</text>
+<text x="1168.0" y="391" font-size="19" fill="#555555" text-anchor="start">4 workers / 499 steps</text>
+<text x="1168.0" y="420" font-size="19" fill="#555555" text-anchor="start">2.1 GiB peak build RAM</text>
+<text x="64" y="487" font-size="22" fill="#111111" text-anchor="start" font-weight="700">THE TUNING SEQUENCE / 19 COMPLETED RESPONSES</text>
+<path d="M64 505H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="536" font-size="19" fill="#555555" text-anchor="start">Weighted means; thin lines show observed min–max across replies, not confidence intervals.</text>
+<text x="72" y="578" font-size="24" fill="#111111" text-anchor="start" font-weight="700">01 / Vulkan / no MTP / 11 GiB</text>
+<text x="72" y="609" font-size="18" fill="#555555" text-anchor="start">Initial reference / mmap / n=1</text>
+<text x="975" y="593" font-size="36" fill="#111111" text-anchor="end" font-weight="700">9.81</text>
+<text x="975" y="620" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 587H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="579" width="219.81" height="16" fill="#999999"/>
+<path d="M1259.8085103066987 613H1259.8085103066987" stroke="#111111" fill="none"/>
+<path d="M1259.8085103066987 608v10 M1259.8085103066987 608v10" stroke="#111111"/>
+<path d="M64 647H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="683" font-size="24" fill="#111111" text-anchor="start" font-weight="700">02 / Vulkan / MTP2 / 11 GiB</text>
+<text x="72" y="714" font-size="18" fill="#555555" text-anchor="start">Separate compatible Q8 assistant / n=2</text>
+<text x="975" y="698" font-size="36" fill="#111111" text-anchor="end" font-weight="700">14.83</text>
+<text x="975" y="725" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 692H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="684" width="332.12" height="16" fill="#999999"/>
+<path d="M1350.374677697103 718H1376.7230105947176" stroke="#111111" fill="none"/>
+<path d="M1350.374677697103 713v10 M1376.7230105947176 713v10" stroke="#111111"/>
+<path d="M64 752H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="788" font-size="24" fill="#111111" text-anchor="start" font-weight="700">03 / CUDA / MTP2 / 11 GiB</text>
+<text x="72" y="819" font-size="18" fill="#555555" text-anchor="start">First backend switch / n=3</text>
+<text x="975" y="803" font-size="36" fill="#111111" text-anchor="end" font-weight="700">14.01</text>
+<text x="975" y="830" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 797H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="789" width="313.79" height="16" fill="#999999"/>
+<path d="M1352.0105173030618 823H1356.7111806116202" stroke="#111111" fill="none"/>
+<path d="M1352.0105173030618 818v10 M1356.7111806116202 818v10" stroke="#111111"/>
+<path d="M64 857H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="893" font-size="24" fill="#111111" text-anchor="start" font-weight="700">04 / CUDA / MTP2 / 20 GiB</text>
+<text x="72" y="924" font-size="18" fill="#555555" text-anchor="start">Service cap raised in the same process / n=1</text>
+<text x="975" y="908" font-size="36" fill="#111111" text-anchor="end" font-weight="700">17.64</text>
+<text x="975" y="935" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 902H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="894" width="395.19" height="16" fill="#999999"/>
+<path d="M1435.1876638203341 928H1435.1876638203341" stroke="#111111" fill="none"/>
+<path d="M1435.1876638203341 923v10 M1435.1876638203341 923v10" stroke="#111111"/>
+<path d="M64 962H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="998" font-size="24" fill="#111111" text-anchor="start" font-weight="700">05 / CUDA / MTP2 / direct load</text>
+<text x="72" y="1029" font-size="18" fill="#555555" text-anchor="start">Reverted: less than 1 GiB available system RAM / n=1</text>
+<text x="975" y="1013" font-size="36" fill="#111111" text-anchor="end" font-weight="700">17.84</text>
+<text x="975" y="1040" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1007H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="999" width="399.61" height="16" fill="#999999"/>
+<path d="M1439.6094990450824 1033H1439.6094990450824" stroke="#111111" fill="none"/>
+<path d="M1439.6094990450824 1028v10 M1439.6094990450824 1028v10" stroke="#111111"/>
+<path d="M64 1067H1536" stroke="#cccccc" fill="none"/>
+<rect x="56" y="1071" width="1488.00" height="98" fill="#eaeaea"/>
+<text x="72" y="1103" font-size="24" fill="#111111" text-anchor="start" font-weight="700">06 / CUDA / MTP2 / 20 GiB</text>
+<text x="72" y="1134" font-size="18" fill="#555555" text-anchor="start">mmap restored / best phase mean / n=4</text>
+<text x="975" y="1118" font-size="36" fill="#111111" text-anchor="end" font-weight="700">18.80</text>
+<text x="975" y="1145" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1112H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1104" width="421.05" height="16" fill="#111111"/>
+<path d="M1446.3059306636642 1138H1474.1362966212182" stroke="#111111" fill="none"/>
+<path d="M1446.3059306636642 1133v10 M1474.1362966212182 1133v10" stroke="#111111"/>
+<path d="M64 1172H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="1208" font-size="24" fill="#111111" text-anchor="start" font-weight="700">07 / CUDA / no MTP / 20 GiB</text>
+<text x="72" y="1239" font-size="18" fill="#555555" text-anchor="start">Later MTP-off comparison / n=4</text>
+<text x="975" y="1223" font-size="36" fill="#111111" text-anchor="end" font-weight="700">17.36</text>
+<text x="975" y="1250" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1217H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1209" width="388.90" height="16" fill="#999999"/>
+<path d="M1425.2152478032663 1243H1430.7352610029084" stroke="#111111" fill="none"/>
+<path d="M1425.2152478032663 1238v10 M1430.7352610029084 1238v10" stroke="#111111"/>
+<path d="M64 1277H1536" stroke="#cccccc" fill="none"/>
+<text x="72" y="1313" font-size="24" fill="#111111" text-anchor="start" font-weight="700">08 / CUDA / MTP2 / 11 GiB</text>
+<text x="72" y="1344" font-size="18" fill="#555555" text-anchor="start">Later low-cap comparison / n=3</text>
+<text x="975" y="1328" font-size="36" fill="#111111" text-anchor="end" font-weight="700">17.51</text>
+<text x="975" y="1355" font-size="17" fill="#555555" text-anchor="end">tok/s</text>
+<path d="M1040 1322H1488" stroke="#cccccc" fill="none"/>
+<rect x="1040" y="1314" width="392.13" height="16" fill="#999999"/>
+<path d="M1417.5914169345983 1348H1449.3880470400372" stroke="#111111" fill="none"/>
+<path d="M1417.5914169345983 1343v10 M1449.3880470400372 1343v10" stroke="#111111"/>
+<path d="M64 1382H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1450" font-size="22" fill="#111111" text-anchor="start" font-weight="700">WHAT HELPED — AND WHAT THE DATA CANNOT ISOLATE</text>
+<path d="M64 1468H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1500" font-size="20" fill="#555555" text-anchor="start">GPU: attention + 3 expert blocks + Q8 KV. CPU: experts in 27/30 blocks. 32K / 1 slot / 6 threads.</text>
+<text x="64" y="1534" font-size="20" fill="#555555" text-anchor="start">RAM headroom, MTP and cache state matter. CUDA alone first measured 14.83 → 14.01 tok/s (-5.5%).</text>
+<text x="64" y="1568" font-size="20" fill="#555555" text-anchor="start">Different prompts and live histories. Phase percentages are not additive; no full-32K quality test.</text>
+<path d="M64 1602H1536" stroke="#cccccc" fill="none"/>
+<text x="64" y="1642" font-size="18" fill="#555555" text-anchor="start">DATA + METHODS / docs/benchmarks/gemma4-cuda-mtp-ram.md and .csv</text>
 </g>
 </svg>

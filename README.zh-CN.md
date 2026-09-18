@@ -4,6 +4,8 @@
   <a href="README.md">English</a> · <a href="README.ru.md">Русский</a> · <strong>简体中文</strong> · <a href="README.es.md">Español</a>
 </p>
 
+**September 18 update (English):** [Bonsai benchmarks](docs/benchmarks/bonsai.md) · [REAP / APEX rebuild](docs/implementations/reap.md) · [Jev API + browser-use](docs/interfaces/jev.md) · [Updated graphics](docs/assets/README.md).
+
 **用现有硬件运行更大的模型。** LocalForgeLLM 是一个让编程智能体构建并优化本地 AI 技术栈的框架。你提供任务，也可以指定 MoE 模型；智能体为你的硬件匹配模型、推理引擎、量化方案和启动参数。搭建好的技术栈可用于本地聊天、视觉和编程智能体。
 
 **技术栈：** AI 编程智能体 · 模型与引擎文档 · Python / Bash · [llama.cpp](https://github.com/ggml-org/llama.cpp) 等推理引擎 · CPU / GPU 后端 · 本地 HTTP API。
